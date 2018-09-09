@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GHESKIO</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_set_prefs">SetPrefs</string>
+    <string name="title_activity_qstats">QStats</string>
+    <string name="title_activity_edit_qrecord">EditQRecord</string>
+    <string name="take_button">take</string>
+    <string name="give_button">give</string>
+    <string name="next_button">next</string>
+    <string name="comments_label">comments</string>
+    <string name="give_time_label">give_time</string>
+    <string name="duration_label">duration</string>
+    <string name="prefs_label">prefs</string>
+    <string name="stats_label">stats</string>
+    <string name="worker_label">worker</string>
+    <string name="station_label">station id</string>
+    <string name="facility_label">facility id</string>
+    <string name="server_label">server IP</string>
+    <string name="username_label">user</string>
+    <string name="port_label">port</string>
+    <string name="num_gives_label">gives</string>
+    <string name="num_takes_label">takes</string>
+    <string name="start_time_label">start</string>
+    <string name="end_time_label">end</string>
+    <string name="avg_wait_label">avg wt</string>
+    <string name="upload_label">upload</string>
+    <string name="clear_label">clear</string>
+    <string name="refresh_label">refresh</string>
+    <string name="save_label">save</string>
+    <string name="passwd_label">passwd</string>
+    <string name="server_info">server</string>
+    <string name="title_activity_show_detail">ShowDetail</string>
+    <string name="token_label">tokenid</string>
+    <string name="skip_button">skip</string>
+    <string name="find_button">find</string>
+    <string name="endpoint_label">URL</string>
+    <string name="q_size">queue size</string>
+    <string name="delete_button">delete</string>
+    <string name="title_activity_prefs">Prefs</string>
+    <string name="title_activity_server">Server</string>
+    <string name="title_activity_item">Item</string>
+    <string name="update_label">update</string>
+    <string name="title_activity_recorduploader">Recorduploader</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_helpinfo">Helpinfo</string>
+    <string name="num_shows_label">shows</string>
+    <string name="show_label">show</string>
+    <string name="token_id_needed">token id needed</string>
+    <string name="no_tokens_found">no tokens found</string>
+    <string name="token_already_given">token already given</string>
+    <string name="end_of_queue_reached">end of queue reached</string>
+    <string name="please_add_worker">please add worker</string>
+    <string name="please_add_station">please add station</string>
+    <string name="please_add_facility">please add facility</string>
+    <string name="not_enough_info_for_avgs">not enough info to compute average</string>
+    <string name="problem_uploading">problem uploading; please check network and server settings</string>
+    <string name="identity_need">Please enter who is operating this device and where they are in Prefs</string>
+    <string name="upload_success">Upload complete</string>
+    <string name="upload_failure">problem uploading; please check network and server settings</string>
+    <string name="edit_label">Edit</string>
+    <string name="title_activity_edit_record">EditRecord</string>
+    <string name="record_updated">record updated</string>
+    <string name="record_deleted">record deleted</string>
+    <string name="title_activity_gedit">Gedit</string>
+    <string name="prefs_saved">preferences saved</string>
+    <string name="unknown_token">unknown token!</string>
+    <string name="begin_wait_label">begin wt</string>
+    <string name="end_wait_label">end wt</string>
+    <string-array name="lang_choice">
+        <item>English</item>
+        <item>Française</item>
+        <item>Kreyòl</item>
+    </string-array>
+
+</resources>

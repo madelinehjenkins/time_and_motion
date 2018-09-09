@@ -1,0 +1,153 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:1-72:12
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\appcompat-v7-23.1.1.aar\5d789261e7b48d1dce9699423f7d818e\AndroidManifest.xml:17:1-24:12
+MERGED from [me.dm7.barcodescanner:zxing:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\zxing-1.8.4.aar\d38188063de08a9035a3221f55f24fcf\AndroidManifest.xml:2:1-13:12
+MERGED from [me.dm7.barcodescanner:core:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\core-1.8.4.aar\53af66f6b9511f3c3ac26b1570792c4f\AndroidManifest.xml:2:1-13:12
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\support-v4-23.1.1.aar\a12c5a5348ef08f33422d062ed2fac18\AndroidManifest.xml:17:1-24:12
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:1-72:12
+	package
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:4:5-32
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:6:5-30
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:3:5-51
+	xmlns:android
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:5:5-28
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+uses-sdk
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:8:5-11:42
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:8:5-11:42
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:8:5-11:42
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\appcompat-v7-23.1.1.aar\5d789261e7b48d1dce9699423f7d818e\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\appcompat-v7-23.1.1.aar\5d789261e7b48d1dce9699423f7d818e\AndroidManifest.xml:20:5-43
+MERGED from [me.dm7.barcodescanner:zxing:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\zxing-1.8.4.aar\d38188063de08a9035a3221f55f24fcf\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:zxing:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\zxing-1.8.4.aar\d38188063de08a9035a3221f55f24fcf\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:core:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\core-1.8.4.aar\53af66f6b9511f3c3ac26b1570792c4f\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:core:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\core-1.8.4.aar\53af66f6b9511f3c3ac26b1570792c4f\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\support-v4-23.1.1.aar\a12c5a5348ef08f33422d062ed2fac18\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\support-v4-23.1.1.aar\a12c5a5348ef08f33422d062ed2fac18\AndroidManifest.xml:20:5-43
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:8:5-11:42
+INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:8:5-11:42
+	android:targetSdkVersion
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:10:9-38
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+	tools:ignore
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:11:9-39
+	android:minSdkVersion
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:9:9-35
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+		INJECTED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml
+permission#socket_permission
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:13:5-16:18
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:15:9-42
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:14:9-41
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:18:5-19:23
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:18:22-76
+uses-permission#android.permission.INTERNET
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:20:5-67
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:20:22-64
+uses-permission#android.permission.CAMERA
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:22:5-65
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:22:22-62
+application
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:24:5-70:19
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\appcompat-v7-23.1.1.aar\5d789261e7b48d1dce9699423f7d818e\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\appcompat-v7-23.1.1.aar\5d789261e7b48d1dce9699423f7d818e\AndroidManifest.xml:22:5-20
+MERGED from [me.dm7.barcodescanner:zxing:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\zxing-1.8.4.aar\d38188063de08a9035a3221f55f24fcf\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:zxing:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\zxing-1.8.4.aar\d38188063de08a9035a3221f55f24fcf\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:core:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\core-1.8.4.aar\53af66f6b9511f3c3ac26b1570792c4f\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:core:1.8.4] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\core-1.8.4.aar\53af66f6b9511f3c3ac26b1570792c4f\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\support-v4-23.1.1.aar\a12c5a5348ef08f33422d062ed2fac18\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\tluong\.gradle\caches\transforms-1\files-1.1\support-v4-23.1.1.aar\a12c5a5348ef08f33422d062ed2fac18\AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:27:9-41
+	android:icon
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:26:9-45
+	android:allowBackup
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:25:9-35
+	android:theme
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:28:9-53
+activity#org.gheskio.queue.MainActivity
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:29:9-37:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:31:13-45
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:30:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:32:13-36:29
+action#android.intent.action.MAIN
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:33:17-69
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:33:25-66
+category#android.intent.category.LAUNCHER
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:35:17-77
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:35:27-74
+activity#org.gheskio.queue.Prefs
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:38:9-41:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:40:13-34
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:39:13-34
+activity#org.gheskio.queue.Server
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:42:9-45:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:44:13-58
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:43:13-35
+activity#org.gheskio.queue.Qstats
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:46:9-49:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:48:13-58
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:47:13-35
+activity#org.gheskio.queue.QrCodeScanner
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:50:9-53:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:52:13-59
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:51:13-42
+activity#org.gheskio.queue.Item
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:54:9-57:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:56:13-56
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:55:13-33
+activity#org.gheskio.queue.Recorduploader
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:58:9-61:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:60:13-66
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:59:13-43
+activity#org.gheskio.queue.Helpinfo
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:62:9-65:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:64:13-60
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:63:13-37
+activity#org.gheskio.queue.Gedit
+ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:66:9-69:20
+	android:label
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:68:13-57
+	android:name
+		ADDED from G:\Share\TLuong\Pro bono\Gheskio\Gheskio_app\app\src\main\AndroidManifest.xml:67:13-34

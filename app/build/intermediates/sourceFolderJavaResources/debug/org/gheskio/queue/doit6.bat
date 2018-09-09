@@ -1,0 +1,1 @@
+java -classpath "c:\cygwin\home\chris\apache-tomcat-6.0.39\webapps\gheskio\WEB-INF\classes;..\..\.." org.gheskio.queue.PostTest ..\..\..\..\misc\test_records.txt http://localhost:8080/gheskio/upload?foo=goo"

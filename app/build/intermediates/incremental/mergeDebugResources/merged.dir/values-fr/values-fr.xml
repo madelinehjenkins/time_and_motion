@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lang_choice">
+        <item>English</item>
+        <item>Française</item>
+        <item>Kreyòl</item>
+    </string-array>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Revenir à l\'accueil"</string>
+    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
+    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Revenir en haut de la page"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Plus d\'options"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"OK"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Tout afficher"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Sélectionner une application"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"DÉSACTIVÉ"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"ACTIVÉ"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"Rechercher…"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Effacer la requête"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Requête de recherche"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Rechercher"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Envoyer la requête"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Recherche vocale"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Partager avec"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Partager avec %s"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Réduire"</string>
+    <string name="action_settings">Parametres</string>
+    <string name="app_name">GHESKIO</string>
+    <string name="avg_wait_label">moyenne wt</string>
+    <string name="begin_wait_label">Beguine q</string>
+    <string name="clear_label">clair</string>
+    <string name="comments_label">commentaire</string>
+    <string name="delete_button">effacer</string>
+    <string name="duration_label">duree</string>
+    <string name="edit_label">diriger</string>
+    <string name="end_of_queue_reached">fin atteint</string>
+    <string name="end_time_label">temp fin</string>
+    <string name="end_wait_label">end q</string>
+    <string name="endpoint_label">URL</string>
+    <string name="facility_label">facilite id</string>
+    <string name="find_button">trouver</string>
+    <string name="give_button">debut att</string>
+    <string name="give_time_label">debut temps</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="identity_need">Sil vous plait nous dire qui et ou vous etes</string>
+    <string name="next_button">sulvant</string>
+    <string name="no_tokens_found">tokens pas trouve</string>
+    <string name="not_enough_info_for_avgs">pas assez dinformations</string>
+    <string name="num_gives_label">nombre debut</string>
+    <string name="num_shows_label">montreres</string>
+    <string name="num_takes_label">nombre fin</string>
+    <string name="passwd_label">mot de passe</string>
+    <string name="please_add_facility">sil vous plait ajoutez facility</string>
+    <string name="please_add_station">sil vous plait ajoutez station</string>
+    <string name="please_add_worker">sil vous plait ajoutez travailleur</string>
+    <string name="port_label">port</string>
+    <string name="prefs_label">params</string>
+    <string name="prefs_saved">Préférences enregistrées</string>
+    <string name="problem_uploading">Problème de téléchargement; veuillez vérifier le réseau et les paramètres du serveur</string>
+    <string name="q_size">queue</string>
+    <string name="record_deleted">Élément supprimé</string>
+    <string name="record_updated">Élément mis à jour</string>
+    <string name="refresh_label">actualiser</string>
+    <string name="save_label">sauver</string>
+    <string name="server_info">server</string>
+    <string name="server_label">server IP</string>
+    <string name="show_label">montrer</string>
+    <string name="skip_button">sauter</string>
+    <string name="start_time_label">temp debut</string>
+    <string name="station_label">station id</string>
+    <string name="stats_label">stats</string>
+    <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">">999"</string>
+    <string name="take_button">fin att</string>
+    <string name="title_activity_edit_qrecord">ModifierQRecord</string>
+    <string name="title_activity_helpinfo">Helpinfo</string>
+    <string name="title_activity_item">article</string>
+    <string name="title_activity_prefs">Params</string>
+    <string name="title_activity_qstats">QStats</string>
+    <string name="title_activity_recorduploader">telecharger</string>
+    <string name="title_activity_server">Server</string>
+    <string name="title_activity_set_prefs">Definir preferences</string>
+    <string name="title_activity_show_detail">Detail</string>
+    <string name="token_already_given">token deja donne</string>
+    <string name="token_id_needed">token id neecessaire</string>
+    <string name="token_label">tokenid</string>
+    <string name="unknown_token">Jeton inconnu!</string>
+    <string name="update_label">mettre</string>
+    <string name="upload_failure">Problème de téléchargement; veuillez vérifier le réseau et les paramètres du serveur</string>
+    <string name="upload_label">telecharger</string>
+    <string name="upload_success">Telechargez complet</string>
+    <string name="username_label">user</string>
+    <string name="worker_label">travailieur</string>
+</resources>

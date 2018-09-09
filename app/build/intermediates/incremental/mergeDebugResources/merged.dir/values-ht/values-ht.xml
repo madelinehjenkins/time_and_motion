@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lang_choice">
+        <item>English</item>
+        <item>Française</item>
+        <item>Kreyòl</item>
+    </string-array>
+    <string name="action_settings">Paramètres</string>
+    <string name="app_name">GHESKIO</string>
+    <string name="avg_wait_label">rete tann mwayèn</string>
+    <string name="clear_label">klè</string>
+    <string name="comments_label">kòmantè</string>
+    <string name="delete_button">efase</string>
+    <string name="duration_label">dire</string>
+    <string name="edit_label">Edit</string>
+    <string name="end_of_queue_reached">nan fen keu rive</string>
+    <string name="end_time_label">fen</string>
+    <string name="endpoint_label">URL</string>
+    <string name="facility_label">id etablisman</string>
+    <string name="find_button">jwenn</string>
+    <string name="give_button">kòmanse</string>
+    <string name="give_time_label">bay tan</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="identity_need">Tanpri antre ki moun ki opere aparèy sa a ak ki kote yo ye nan Preferences</string>
+    <string name="next_button">pwochen</string>
+    <string name="no_tokens_found">pa gen okenn marqueur jwenn</string>
+    <string name="not_enough_info_for_avgs">pa ase enfòmasyon yo kalkile mwayèn</string>
+    <string name="num_gives_label">bay</string>
+    <string name="num_shows_label">montre nimewo</string>
+    <string name="num_takes_label">pran</string>
+    <string name="passwd_label">modpas</string>
+    <string name="please_add_facility">tanpri ajoute etablisman</string>
+    <string name="please_add_station">tanpri ajoute estasyon</string>
+    <string name="please_add_worker">tanpri ajoute travayè</string>
+    <string name="port_label">pò</string>
+    <string name="prefs_label">preferans</string>
+    <string name="prefs_saved">preferans sove</string>
+    <string name="problem_uploading">Upload pwoblèm; tanpri tcheke koneksyon ak sèvè anviwònman</string>
+    <string name="q_size">gwosè keu</string>
+    <string name="record_deleted">dosye efase</string>
+    <string name="record_updated">dosye mete ajou</string>
+    <string name="refresh_label">actualiser</string>
+    <string name="save_label">sove</string>
+    <string name="server_info">sèvè</string>
+    <string name="server_label">sèvè IP</string>
+    <string name="show_label">montre</string>
+    <string name="skip_button">sote</string>
+    <string name="start_time_label">kòmanse</string>
+    <string name="station_label">id estasyon</string>
+    <string name="stats_label">Statistik</string>
+    <string name="take_button">fen</string>
+    <string name="title_activity_edit_qrecord">Edit atik</string>
+    <string name="title_activity_edit_record">Dosye Edit</string>
+    <string name="title_activity_gedit">Gedit</string>
+    <string name="title_activity_helpinfo">ede enfòmasyon</string>
+    <string name="title_activity_item">atik</string>
+    <string name="title_activity_prefs">preferans</string>
+    <string name="title_activity_qstats">Keu estatistik</string>
+    <string name="title_activity_recorduploader">dosye telepartajeur</string>
+    <string name="title_activity_server">sèvè</string>
+    <string name="title_activity_set_prefs">Jeu Préférences</string>
+    <string name="title_activity_show_detail">montre detay</string>
+    <string name="token_already_given">siy deja bay</string>
+    <string name="token_id_needed">id siy nesesè</string>
+    <string name="token_label">id siy</string>
+    <string name="unknown_token">siy pa jwenn!</string>
+    <string name="update_label">aktyalizasyon</string>
+    <string name="upload_failure">Upload pwoblèm; tanpri tcheke koneksyon ak sèvè anviwònman</string>
+    <string name="upload_label">upload</string>
+    <string name="upload_success">Voye konplè</string>
+    <string name="username_label">itilizatè</string>
+    <string name="worker_label">travayè</string>
+</resources>

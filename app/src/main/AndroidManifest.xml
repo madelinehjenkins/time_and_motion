@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.gheskio.queue"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="28"
+        tools:ignore="GradleOverrides" />
+
+    <permission
+        android:name="socket_permission"
+        android:label="socket_permission" >
+    </permission>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Prefs"
+            android:label="Prefs" >
+        </activity>
+        <activity
+            android:name=".Server"
+            android:label="@string/title_activity_server" >
+        </activity>
+        <activity
+            android:name=".Qstats"
+            android:label="@string/title_activity_qstats" >
+        </activity>
+        <activity
+            android:name=".QrCodeScanner"
+            android:label="Please scan code (QR, barcode)" >
+        </activity>
+        <activity
+            android:name=".Item"
+            android:label="@string/title_activity_item" >
+        </activity>
+        <activity
+            android:name=".Recorduploader"
+            android:label="@string/title_activity_recorduploader" >
+        </activity>
+        <activity
+            android:name=".Helpinfo"
+            android:label="@string/title_activity_helpinfo" >
+        </activity>
+        <activity
+            android:name=".Gedit"
+            android:label="@string/title_activity_gedit" >
+        </activity>
+    </application>
+
+</manifest>

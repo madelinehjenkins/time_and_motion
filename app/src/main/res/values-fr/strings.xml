@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GHESKIO</string>
+    <string name="action_settings">Parametres</string>
+    <string name="title_activity_set_prefs">Definir preferences</string>
+    <string name="title_activity_qstats">QStats</string>
+    <string name="title_activity_edit_qrecord">ModifierQRecord</string>
+    <string name="take_button">fin att</string>
+    <string name="give_button">debut att</string>
+    <string name="next_button">sulvant</string>
+    <string name="comments_label">commentaire</string>
+    <string name="give_time_label">debut temps</string>
+    <string name="duration_label">duree</string>
+    <string name="prefs_label">params</string>
+    <string name="stats_label">stats</string>
+    <string name="worker_label">travailieur</string>
+    <string name="station_label">station id</string>
+    <string name="facility_label">facilite id</string>
+    <string name="server_label">server IP</string>
+    <string name="username_label">user</string>
+    <string name="port_label">port</string>
+    <string name="num_gives_label">nombre debut</string>
+    <string name="num_takes_label">nombre fin</string>
+    <string name="start_time_label">temp debut</string>
+    <string name="end_time_label">temp fin</string>
+    <string name="avg_wait_label">moyenne wt</string>
+    <string name="upload_label">telecharger</string>
+    <string name="clear_label">clair</string>
+    <string name="refresh_label">actualiser</string>
+    <string name="save_label">sauver</string>
+    <string name="passwd_label">mot de passe</string>
+    <string name="server_info">server</string>
+    <string name="title_activity_show_detail">Detail</string>
+    <string name="token_label">tokenid</string>
+    <string name="skip_button">sauter</string>
+    <string name="find_button">trouver</string>
+    <string name="endpoint_label">URL</string>
+    <string name="q_size">queue</string>
+    <string name="delete_button">effacer</string>
+    <string name="title_activity_prefs">Params</string>
+    <string name="title_activity_server">Server</string>
+    <string name="title_activity_item">article</string>
+    <string name="update_label">mettre</string>
+    <string name="title_activity_recorduploader">telecharger</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_helpinfo">Helpinfo</string>
+    <string name="num_shows_label">montreres</string>
+    <string name="show_label">montrer</string>
+    <string name="token_id_needed">token id neecessaire</string>
+    <string name="no_tokens_found">tokens pas trouve</string>
+    <string name="token_already_given">token deja donne</string>
+    <string name="end_of_queue_reached">fin atteint</string>
+    <string name="please_add_worker">sil vous plait ajoutez travailleur</string>
+    <string name="please_add_station">sil vous plait ajoutez station</string>
+    <string name="please_add_facility">sil vous plait ajoutez facility</string>
+    <string name="not_enough_info_for_avgs">pas assez dinformations</string>
+    <string name="problem_uploading">Problème de téléchargement; veuillez vérifier le réseau et les paramètres du serveur</string>
+    <string name="identity_need">Sil vous plait nous dire qui et ou vous etes</string>
+    <string name="upload_success">Telechargez complet</string>
+    <string name="upload_failure">Problème de téléchargement; veuillez vérifier le réseau et les paramètres du serveur</string>
+    <string name="edit_label">diriger</string>
+    <string name="record_updated">Élément mis à jour</string>
+    <string name="record_deleted">Élément supprimé</string>
+    <string name="prefs_saved">Préférences enregistrées</string>
+    <string name="unknown_token">Jeton inconnu!</string> 
+    <string name="begin_wait_label">Beguine q</string>
+    <string name="end_wait_label">end q</string>  
+    <string-array name="lang_choice">
+        <item>English</item>
+        <item>Française</item>
+        <item>Kreyòl</item>
+    </string-array>
+          
+    
+
+</resources>

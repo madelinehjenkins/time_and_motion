@@ -1,0 +1,46 @@
+previous bugs.txt:
+1) App crashes when not connected to network and trying to upload, even though this is done within a try-catch block of Qstats
+2) Next, Skip, and Find all seem to have different timestamp formats; and Next seems to use time 0 (i.e. 1970)
+______________________________________________________________________________________________________________
+previous notes.txt:
+a) to attach access the local sqlite3 database in the emulator, go:
+
+adb -s emulator-5554 shell
+
+then:
+root@generic:/ # sqlite3 /data/data/org.gheskio.queue/databases/SimpleQDB.db
+
+--------------------------
+
+useful command-lines for creating QRcodes:
+
+# make a bigger one with ten dots instead of default 3
+qrencode -s 10 -o /home/cgn/public_html/qrcodes/newfoo.png 000123456
+
+# add a visible title to the top
+convert fooqrbig.png -gravity North -background White -splice 0x18 -pointsize 30 -annotate +0+10 '00012345' annofoo.png
+
+# put a bunch together on a page
+montage -geometry 256x256+2+2 anno-1.png anno-2.png anno-3.png anno-0.png montage.png
+
+# put a bunch of pages together into a single PDF
+convert montage1.png montage2.png montage3.png combined.pdf
+
+----------------------------
+
+Simulator
+
+we want to simulate what the events might be from a variety of workers at a variety of stations, with various arrival queues and upload times.
+
+So we'd need threads for:
+
+workers
+patients
+
+and objects for facilities and locations within that facility. So first, let's create a property sheet for
+facilities.location, and then a bunch of workers we can allocate to them, or rather, just automagically spawn a
+worker, and patients, at each.  We start with a random arrival time interval, and a constant drain frequency.
+
+----------------------------
+
+The current key for signing things is gheskio_key4; and the PW is: "stop_HIV_now!"
