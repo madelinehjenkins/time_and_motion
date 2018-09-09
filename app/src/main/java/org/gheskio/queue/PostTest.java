@@ -31,6 +31,8 @@ public class PostTest {
 			urlConn.setRequestMethod("POST");
 
 			PrintWriter     pw = new PrintWriter(urlConn.getOutputStream());
+			//
+			// PrintWriter     pw = new PrintWriter(urlConn.getInputStream());
 
 			FileReader      fis = new FileReader(args[0]);
 			BufferedReader  br = new BufferedReader(fis);

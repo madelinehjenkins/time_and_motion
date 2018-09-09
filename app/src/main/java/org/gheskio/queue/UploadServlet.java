@@ -36,15 +36,19 @@ public class UploadServlet extends HttpServlet {
 		sb.append("CAST('");
 		sb.append(gCal.get(Calendar.YEAR) + "-" + (1 + gCal.get(Calendar.MONTH)) + "-" + gCal.get(Calendar.DAY_OF_MONTH));
 		sb.append(" " + gCal.get(Calendar.HOUR_OF_DAY) + ":" + gCal.get(Calendar.MINUTE) + ":" + gCal.get(Calendar.SECOND));
-		sb.append("' as datetime2(7))");
-//		sb.append("' as datetime)");
+		sb.append("' as datetime)");
 		return(sb.toString());
 
 	}
 
 	public synchronized static void doUploadFile(BufferedReader bReader, Statement stmt, String remoteAddr) throws IOException, SQLException {
 
+		//out.println("in doUploadFile");
+
 		String nextLine = bReader.readLine();
+
+		//outPrint.println("nextLine is : ",nextLine);	
+
 		StringBuilder sb = new StringBuilder();
 		while (nextLine != null) {
 
@@ -112,29 +116,62 @@ public class UploadServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
+		
+		System.out.println("I'm here");
+
+		//PrintWriter out = res.getWriter();
+                //out.println("<html><head><title>Query Response</title></head><body>");
+                //out.println("hello world");
+
 		InputStream sIOStream = req.getInputStream();
 		InputStreamReader isr = new InputStreamReader(sIOStream);
 		BufferedReader br = new BufferedReader(isr);
 
-		String nextLine = null;
+		if (br != null) {
+			//out.println("br is not null, outside try");
+		} else {
+			//out.println("br is null, outside try");
+		}
+
+		//String nextLine = null;
 		try {
 
 			// Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			Class.forName("net.sourceforge.jtds.jdbc.Driver");
+			// Class.forName("net.sourceforge.jtds.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 
 			Properties props = new Properties();
-
+			
+			//out.println("userName is : " + userName);
 			props.setProperty("USER", userName);
+		 	//out.println("passWord is : " + passWord);	
 			props.setProperty("PASSWORD", passWord);
 			props.setProperty("SERVERTYPE", "1");
 			props.setProperty("TDS", "8.0");
 
-			System.out.println("trying: " + jdbcString + " with username: " + userName + " and pw: " + passWord);
-			Connection conn = DriverManager.getConnection(jdbcString, props);
+			//out.println("jdbcString is : " + jdbcString);
 
+			//out.println("trying: " + jdbcString + " with username: " + userName + " and pw: " + passWord);
+			System.out.println("trying: " + jdbcString + " with username: " + userName + " and pw: " + passWord);
+			//out.println("before Connection");			
+	
+			Connection conn = DriverManager.getConnection(jdbcString, props);
+			//out.println("after Connection");	
+			
 			Statement stmt = conn.createStatement();
+			//out.println("after Statement");
 
 			String remoteAddr = req.getRemoteAddr();
+			//out.println("after remoteAddr");	
+			//String testLine = br.readLine();
+			//out.println("next line is: " + testLine);
+			//
+			if (br != null) {
+				//out.println("br is not null");
+			} else {
+				//out.println("br is null");
+			}
+
 			doUploadFile(br, stmt, remoteAddr);
 
 			// XXX - need to figure out CASTing to dates in SQLServer prepared statements
@@ -151,12 +188,19 @@ public class UploadServlet extends HttpServlet {
 			ps.close();
 
 		} catch (Exception e) {
+			//out.println("there is an error");
+			//out.println(e);
 			e.printStackTrace();
 		}
+		//out.println("</body></html>");
 	}
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		System.out.println("Hello, I'm in get");
+		//PrintWriter out = res.getWriter();
+		//out.println("<html><head><title>Query Response</title></head><body>");
+		//out.println("hello world");
+		//out.println("</body></html>");
 	}
 
 	public static void usage() {
