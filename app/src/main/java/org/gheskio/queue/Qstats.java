@@ -357,13 +357,14 @@ public class Qstats extends Activity {
 			 
 					urlConn.disconnect();
 
+					//TL2018.09.08: Comment out line 360 - 367 to disable deletion of database after upload
 					// delete the rows...
-					String deleteString =  "delete from SimpleQRecord";
-					MainActivity.myDB.execSQL(deleteString);
+//					 String deleteString =  "delete from SimpleQRecord";
+//					 MainActivity.myDB.execSQL(deleteString);
 
 					// delete completed SimpleQ items; mark others as fragments
-					deleteString =  "delete from SimpleQ where duration > 0";
-					MainActivity.myDB.execSQL(deleteString);
+//					 deleteString =  "delete from SimpleQ where duration > 0";
+//					 MainActivity.myDB.execSQL(deleteString);
 
 				}
 				
