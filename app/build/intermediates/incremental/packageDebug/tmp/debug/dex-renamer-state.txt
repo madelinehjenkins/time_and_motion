@@ -1,4 +1,0 @@
-#Sun Sep 09 18:40:22 EDT 2018
-base.0=G\:\\Share\\TLuong\\Pro bono\\Gheskio\\Gheskio_app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\56
-path.0=classes.dex
-renamed.0=classes.dex

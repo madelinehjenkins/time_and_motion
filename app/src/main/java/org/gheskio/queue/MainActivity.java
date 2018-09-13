@@ -181,7 +181,7 @@ public class MainActivity extends Activity {
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		setContentView(R.layout.activity_main);
-		EditText tokenText = (EditText)findViewById(R.id.editText1);
+		EditText tokenText = (EditText)findViewById(R.id.qrCode);
 		if (requestCode == QRCODEINTENT) {	    	
 			if (resultCode == RESULT_OK) {
 
@@ -202,9 +202,9 @@ public class MainActivity extends Activity {
 				tokenText.setText(resultTokenid);
 
 				String resultComments = intent.getStringExtra("comments");
-				EditText commentsEditText = (EditText)findViewById(R.id.editText20);
+				EditText commentsEditText = (EditText)findViewById(R.id.comments);
 				commentsEditText.setText(resultComments);
-				Button editButton = (Button)findViewById(R.id.button5);
+				Button editButton = (Button)findViewById(R.id.editButton);
 				if (resultTokenid.length() > 0) {
 					editButton.setEnabled(true);
 				} else {
@@ -231,7 +231,7 @@ public class MainActivity extends Activity {
 		if (c.getCount() > 0) {
 			c.moveToFirst();
 			int tokenCount = c.getInt(0);
-			TextView tokenCountTV = (TextView)findViewById(R.id.textView2);
+			TextView tokenCountTV = (TextView)findViewById(R.id.queueSize);
 			tokenCountTV.setText(Integer.toString(tokenCount));			
 		}
 		c.close();	
@@ -241,8 +241,8 @@ public class MainActivity extends Activity {
 	/** give a token */
 	public void doStartWait(View view) {
 		if (checkIdentity() == 1) {
-			mEditText = ((EditText)findViewById(R.id.editText1));
-			TextView commentET = (TextView)findViewById(R.id.editText20);
+			mEditText = ((EditText)findViewById(R.id.qrCode));
+			TextView commentET = (TextView)findViewById(R.id.comments);
 
 
 			String commentVal = commentET.getText().toString();
@@ -268,7 +268,7 @@ public class MainActivity extends Activity {
 						mEditText.setText("");
 						commentET.setText("");
 
-						Button editButton = (Button)findViewById(R.id.button5);
+						Button editButton = (Button)findViewById(R.id.editButton);
 						editButton.setEnabled(false);
 					}
 					c.close();
@@ -294,8 +294,8 @@ public class MainActivity extends Activity {
 
 	public void doFind(View view) {
 		checkInit();
-		mEditText = (EditText)findViewById(R.id.editText1);
-		TextView commentET = (TextView)findViewById(R.id.editText20);	
+		mEditText = (EditText)findViewById(R.id.qrCode);
+		TextView commentET = (TextView)findViewById(R.id.comments);
 
 		String tokenVal = mEditText.getText().toString();
 		if (tokenVal != null) {
@@ -312,7 +312,7 @@ public class MainActivity extends Activity {
 			if (c.getCount() > 0) {
 				c.moveToFirst();
 				String commentVal = c.getString(0);
-				mCommentText = (EditText)findViewById(R.id.editText20);
+				mCommentText = (EditText)findViewById(R.id.comments);
 				mCommentText.setText(commentVal);
 
 				long startTime = c.getLong(1);
@@ -321,7 +321,7 @@ public class MainActivity extends Activity {
 				TextView startTimeView = (TextView)findViewById(R.id.textView6);
 				startTimeView.setText(startDate.toString());
 				enableEdit = true;
-				Button editButton = (Button)findViewById(R.id.button5);
+				Button editButton = (Button)findViewById(R.id.editButton);
 				editButton.setEnabled(true);
 
 			} else {
@@ -342,7 +342,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void gotTokenKeystroke(View view){
-		Button editButton = (Button)findViewById(R.id.button5);
+		Button editButton = (Button)findViewById(R.id.editButton);
 		editButton.setEnabled(false);
 	}
 
@@ -350,7 +350,7 @@ public class MainActivity extends Activity {
 		
 		Intent intent = new Intent(this, Gedit.class);
 
-		mEditText = (EditText)findViewById(R.id.editText1);		
+		mEditText = (EditText)findViewById(R.id.qrCode);
 		String tokenVal = mEditText.getText().toString();
 
 		if (tokenVal != null) {
@@ -430,10 +430,10 @@ public class MainActivity extends Activity {
 
 		if (checkIdentity() == 1) {
 
-			EditText mEditText = (EditText)findViewById(R.id.editText1);		
+			EditText mEditText = (EditText)findViewById(R.id.qrCode);
 			String tokenVal = mEditText.getText().toString();
 
-			mCommentText = (EditText)findViewById(R.id.editText20);
+			mCommentText = (EditText)findViewById(R.id.comments);
 			String commentVal = mCommentText.getText().toString();
 
 			if (tokenVal != null) {
@@ -481,7 +481,7 @@ public class MainActivity extends Activity {
 					mEditText.setText("");
 					mCommentText.setText("");
 					
-					Button editButton = (Button)findViewById(R.id.button5);
+					Button editButton = (Button)findViewById(R.id.editButton);
 					editButton.setEnabled(false);
 					updateQlength();				
 				}
@@ -501,8 +501,8 @@ public class MainActivity extends Activity {
 	/** show a token */
 	public void doShow(View view) {
 		if (checkIdentity() == 1) {
-			mEditText = (EditText)findViewById(R.id.editText1);
-			TextView commentET = (TextView)findViewById(R.id.editText20);
+			mEditText = (EditText)findViewById(R.id.qrCode);
+			TextView commentET = (TextView)findViewById(R.id.comments);
 			String commentVal = commentET.getText().toString();
 
 			String tokenVal = mEditText.getText().toString();
@@ -534,8 +534,8 @@ public class MainActivity extends Activity {
 	/** give a token */
 	public void doGive(View view) {
 		if (checkIdentity() == 1) {
-			mEditText = (EditText)findViewById(R.id.editText1);
-			TextView commentET = (TextView)findViewById(R.id.editText20);
+			mEditText = (EditText)findViewById(R.id.qrCode);
+			TextView commentET = (TextView)findViewById(R.id.comments);
 			String commentVal = commentET.getText().toString();
 
 			String tokenVal = mEditText.getText().toString();
@@ -567,8 +567,8 @@ public class MainActivity extends Activity {
 	/** show a token */
 	public void doTake(View view) {
 		if (checkIdentity() == 1) {
-			mEditText = (EditText)findViewById(R.id.editText1);
-			TextView commentET = (TextView)findViewById(R.id.editText20);
+			mEditText = (EditText)findViewById(R.id.qrCode);
+			TextView commentET = (TextView)findViewById(R.id.comments);
 			String commentVal = commentET.getText().toString();
 
 			String tokenVal = mEditText.getText().toString();
@@ -601,7 +601,7 @@ public class MainActivity extends Activity {
 		// make sure there is something in the Queue at all
 		updateQlength();
 
-		TextView tokenCountTV = (TextView)findViewById(R.id.textView2);
+		TextView tokenCountTV = (TextView)findViewById(R.id.queueSize);
 		String tokenCountText = tokenCountTV.getText().toString();
 		int tokenCount = Integer.parseInt(tokenCountText);
 		if (tokenCount == 0) {
@@ -635,16 +635,16 @@ public class MainActivity extends Activity {
 			String nextComment = c.getString(1);	
 			c.close();
 
-			mEditText = (EditText)findViewById(R.id.editText1);
+			mEditText = (EditText)findViewById(R.id.qrCode);
 			mEditText.setText(nextToken);
 
-			mCommentText = (EditText)findViewById(R.id.editText20);
+			mCommentText = (EditText)findViewById(R.id.comments);
 			mCommentText.setText(nextComment);			
 
 			SimpleQ.lastSkipTime = minGiveTime;
 			
 
-			Button editButton = (Button)findViewById(R.id.button5);
+			Button editButton = (Button)findViewById(R.id.editButton);
 			editButton.setEnabled(true);
 		} 	
 	}
@@ -654,9 +654,9 @@ public class MainActivity extends Activity {
 		// make sure there is something in the Queue at all
 		updateQlength();
 
-		mEditText = (EditText)findViewById(R.id.editText1);
-		mCommentText = (EditText)findViewById(R.id.editText20);
-		TextView tokenCountTV = (TextView)findViewById(R.id.textView2);
+		mEditText = (EditText)findViewById(R.id.qrCode);
+		mCommentText = (EditText)findViewById(R.id.comments);
+		TextView tokenCountTV = (TextView)findViewById(R.id.queueSize);
 
 		String selectionArgs[] = {};
 
@@ -715,7 +715,7 @@ public class MainActivity extends Activity {
 				SimpleQ.lastSkipTime = minGiveTime;
 				java.util.Date tokenTime = new java.util.Date();
 				tokenTime.setTime(minGiveTime);
-				Button editButton = (Button)findViewById(R.id.button5);
+				Button editButton = (Button)findViewById(R.id.editButton);
 				editButton.setEnabled(true);
 			} else {
 				c.close();
@@ -733,13 +733,13 @@ public class MainActivity extends Activity {
 
 	public void doDelete(View view) {
 		checkInit();
-		mEditText = (EditText)findViewById(R.id.editText1);
-		TextView commentET = (TextView)findViewById(R.id.editText20);
+		mEditText = (EditText)findViewById(R.id.qrCode);
+		TextView commentET = (TextView)findViewById(R.id.comments);
 		String commentVal = commentET.getText().toString();
 
 		String tokenVal = mEditText.getText().toString();
 		if (tokenVal != null) {
-			mEditText = (EditText)findViewById(R.id.editText1);			
+			mEditText = (EditText)findViewById(R.id.qrCode);
 
 			String selection = "delete from " + SimpleQ.TABLE_NAME + " where token_id = ? and " + 
 					SimpleQ.COLUMN_DURATION + " = 0";
@@ -753,7 +753,7 @@ public class MainActivity extends Activity {
 			c.close();		
 			// clear the fields
 			mEditText.setText("");
-			mCommentText = (EditText)findViewById(R.id.editText20);
+			mCommentText = (EditText)findViewById(R.id.comments);
 			commentET.setText("");
 			updateQlength();
 		} else {
