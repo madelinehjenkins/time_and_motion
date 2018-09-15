@@ -472,7 +472,7 @@ public class MainActivity extends Activity {
 
 					c.close();
 					long duration = nowTime - giveTime;
-					String updateSQL = "update simpleQ set duration = " + duration + " where token_id = '" +
+					String updateSQL = "update simpleq set duration = " + duration + " where token_id = '" +
 							tokenVal + "'";
 
 					MainActivity.myDB.execSQL(updateSQL);
