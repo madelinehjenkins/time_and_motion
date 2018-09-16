@@ -102,11 +102,11 @@ public class Qstats extends Activity {
 	
 	public void doClear(View view) {
 		AlertDialog.Builder confirmDeleteBuilder = new AlertDialog.Builder(this);
-		confirmDeleteBuilder.setMessage("Are you sure you want to continue? This will delete ALL states data.");
+		confirmDeleteBuilder.setMessage(getString(R.string.confirm_delete_stats_message));
 		confirmDeleteBuilder.setCancelable(true);
 
 		confirmDeleteBuilder.setPositiveButton(
-			"Delete",
+			getString(R.string.delete),
 			new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
 					String whereClause = "delete from simpleq ";
@@ -120,7 +120,7 @@ public class Qstats extends Activity {
 			});
 
 		confirmDeleteBuilder.setNegativeButton(
-				"Cancel",
+				getString(R.string.cancel),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
