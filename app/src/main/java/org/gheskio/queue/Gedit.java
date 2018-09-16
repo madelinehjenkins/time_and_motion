@@ -1,8 +1,10 @@
 package org.gheskio.queue;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -65,51 +67,74 @@ public class Gedit extends Activity {
 	}
 	
 	public void doDelete(View view) {
-		String tokenId = this.getIntent().getStringExtra("TOKEN_ID"); 		
-		String selection = "delete from simpleq where token_id = " + 
-				tokenId + " and duration = 0";
-			
-		// String selectionArgs[] = {};
-		// MainActivity.myDB.delete(SimpleQRecord.TABLE_NAME, SimpleQRecord.COLUMN_TOKEN_ID + "=?", new String[] { tokenId });
-		// for some reason, delete not working... :-/
-		
-		String deleteString = "delete from simpleq where token_id = '" + tokenId + "';";
-		MainActivity.myDB.execSQL(deleteString);
-		// XXX - add a new log record to denote this has been modified ; 
-		// perhaps with duraction -1 ??
-			
-		String deleteString2 = "delete from simpleqrecord where token_id = '" + tokenId + "';";
-		MainActivity.myDB.execSQL(deleteString2);
-		
-		SimpleQRecord editRecord = new SimpleQRecord(tokenId, " ", "delete_token");
 
-			
-		TextView mTextView = (TextView)findViewById(R.id.textView1);
-		mTextView.setText("");	
-			
-		EditText commentText = (EditText)findViewById(R.id.editText1);
-		commentText.setText("");
-		commentText.setEnabled(false);
-			
-		TextView startTimeText = (TextView)findViewById(R.id.textView5);
-		startTimeText.setText("");
-			
-		// XXX - add a new log record to denote this has been deleted by operator ; 
-		// perhaps with duraction -1 ??
-			
-		Context context = getApplicationContext();
-		String msg = getResources().getString(R.string.record_deleted);
-		int duration = Toast.LENGTH_SHORT;
+		AlertDialog.Builder confirmDeleteBuilder = new AlertDialog.Builder(this);
+		confirmDeleteBuilder.setMessage(getString(R.string.confirm_delete_patient_message));
+		confirmDeleteBuilder.setCancelable(true);
 
-		Toast toast = Toast.makeText(context, msg, duration);
-		toast.show();
-			
-	    Intent i = getIntent();
-	    i.putExtra("tokenId", "");
-	    i.putExtra("comments", "");
-	    setResult(RESULT_OK, i);
-	    finish();
-	        
+		confirmDeleteBuilder.setPositiveButton(
+				getString(R.string.delete),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						String tokenId = getIntent().getStringExtra("TOKEN_ID");
+						String selection = "delete from simpleq where token_id = " +
+								tokenId + " and duration = 0";
+
+						// String selectionArgs[] = {};
+						// MainActivity.myDB.delete(SimpleQRecord.TABLE_NAME, SimpleQRecord.COLUMN_TOKEN_ID + "=?", new String[] { tokenId });
+						// for some reason, delete not working... :-/
+
+						String deleteString = "delete from simpleq where token_id = '" + tokenId + "';";
+						MainActivity.myDB.execSQL(deleteString);
+						// XXX - add a new log record to denote this has been modified ;
+						// perhaps with duraction -1 ??
+
+						String deleteString2 = "delete from simpleqrecord where token_id = '" + tokenId + "';";
+						MainActivity.myDB.execSQL(deleteString2);
+
+						SimpleQRecord editRecord = new SimpleQRecord(tokenId, " ", "delete_token");
+
+
+						TextView mTextView = (TextView)findViewById(R.id.textView1);
+						mTextView.setText("");
+
+						EditText commentText = (EditText)findViewById(R.id.editText1);
+						commentText.setText("");
+						commentText.setEnabled(false);
+
+						TextView startTimeText = (TextView)findViewById(R.id.textView5);
+						startTimeText.setText("");
+
+						// XXX - add a new log record to denote this has been deleted by operator ;
+						// perhaps with duraction -1 ??
+
+						Context context = getApplicationContext();
+						String msg = getResources().getString(R.string.record_deleted);
+						int duration = Toast.LENGTH_SHORT;
+
+						Toast toast = Toast.makeText(context, msg, duration);
+						toast.show();
+
+						Intent i = getIntent();
+						i.putExtra("tokenId", "");
+						i.putExtra("comments", "");
+						setResult(RESULT_OK, i);
+						finish();
+					}
+				});
+
+		confirmDeleteBuilder.setNegativeButton(
+				getString(R.string.cancel),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+
+		AlertDialog confirmDelete = confirmDeleteBuilder.create();
+		confirmDelete.show();
+
+
 	}
 	
     @Override

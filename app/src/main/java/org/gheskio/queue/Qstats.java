@@ -11,6 +11,8 @@ import java.net.InetSocketAddress;
 
 import java.net.URL;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.widget.Toast;
 
 import android.os.AsyncTask;
@@ -99,15 +101,34 @@ public class Qstats extends Activity {
 	}
 	
 	public void doClear(View view) {
-		String whereClause = "delete from simpleq ";
-		String selectionArgs[] = {};
-		
-		myDB.execSQL(whereClause);
-		
-		whereClause = "delete from simpleqrecord ";
-		myDB.execSQL(whereClause);
+		AlertDialog.Builder confirmDeleteBuilder = new AlertDialog.Builder(this);
+		confirmDeleteBuilder.setMessage(getString(R.string.confirm_delete_stats_message));
+		confirmDeleteBuilder.setCancelable(true);
 
-		refreshStats();
+		confirmDeleteBuilder.setPositiveButton(
+			getString(R.string.delete),
+			new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					String whereClause = "delete from simpleq ";
+					myDB.execSQL(whereClause);
+
+					whereClause = "delete from simpleqrecord ";
+					myDB.execSQL(whereClause);
+
+					refreshStats();
+				}
+			});
+
+		confirmDeleteBuilder.setNegativeButton(
+				getString(R.string.cancel),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+
+		AlertDialog confirmDelete = confirmDeleteBuilder.create();
+		confirmDelete.show();
 	}
 	
 	public void doRefreshStats(View view) {
