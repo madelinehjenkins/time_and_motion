@@ -46,14 +46,7 @@ public class Prefs extends Activity {
 		return true;
 	}
 
-	private void makeToast(String msgId) {		
-		Context context = getApplicationContext();
-		int duration = Toast.LENGTH_SHORT;
-		String msg = getResources().getString(R.string.token_id_needed);
 
-		Toast toast = Toast.makeText(context, msg, duration);
-		toast.show();
-	}
 	
 	public void doServerPrefs(View view) {
 		Intent intent = new Intent(this, Server.class);
