@@ -8,6 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="4"
+    android:alignmentMode="alignBounds"
+    android:columnOrderPreserved="false"
     android:rowCount="8"
     android:orientation="horizontal"
     tools:context=".MainActivity">
@@ -32,10 +34,15 @@
 
     <ImageButton
         android:id="@+id/openQrButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="0"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_rowSpan="2"
+        android:layout_row="6"
+
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="end"
+        android:scaleType="fitCenter"
         android:onClick="doQRScan"
         android:src="@drawable/qrcode2_icon" />
 
@@ -91,11 +98,10 @@
         android:id="@+id/prefsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="7"
-        android:layout_column="3"
+        android:layout_row="6"
+        android:layout_column="0"
         android:onClick="doPrefs"
         android:text="@string/prefs_label" />
-
 
 
     <Button
@@ -112,9 +118,9 @@
         android:id="@+id/queueSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_columnSpan="2"
-        android:layout_gravity="center"
-        android:layout_row="7"
+
+
+        android:layout_row="4"
         android:layout_column="1"
         android:text="0" />
 
@@ -122,10 +128,8 @@
         android:id="@+id/queueSizeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="1"
-        android:layout_columnSpan="2"
-        android:layout_gravity="center"
+        android:layout_row="4"
+        android:layout_column="0"
         android:text="@string/q_size"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -133,7 +137,7 @@
         android:id="@+id/endWaitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="6"
+        android:layout_row="4"
         android:layout_column="3"
         android:layout_marginBottom="31dp"
         android:onClick="doEndWait"
@@ -143,8 +147,8 @@
         android:id="@+id/beginWaitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="0"
+        android:layout_row="4"
+        android:layout_column="2"
         android:onClick="doStartWait"
         android:text="@string/begin_wait_label" />
 
