@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="4"
-    android:alignmentMode="alignBounds"
+
     android:columnOrderPreserved="false"
     android:rowCount="8"
     android:orientation="horizontal"
