@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -17,11 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class MainActivity extends Activity {
-
-	private ZXingScannerView mScannerView;
 	public static EditText mEditText;
 	public EditText mCommentText;
 	public static SharedPreferences sharedPref = null;
@@ -103,7 +102,7 @@ public class MainActivity extends Activity {
 		Context context = getApplicationContext();
 		int duration = Toast.LENGTH_LONG;
 		String msg = getResources().getString(R.string.token_id_needed);
-		
+
 		// do this to refresh layout, because language might have changed in doPrefs,
 		// because we do a workaround to set non-supported locale, Kreyole...
 		updateQlength();
@@ -143,14 +142,8 @@ public class MainActivity extends Activity {
 			}
 
 			if (needId) {
+				InfoDialog.show(MainActivity.this, getString(R.string.identity_need));
 
-				Context context = getApplicationContext();
-				int duration = Toast.LENGTH_LONG;
-
-				String msg = getResources().getString(R.string.identity_need);
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();
-				// doPrefs(this.getWindow().getDecorView().getRootView());
 			}
 		}		
 	}
@@ -258,11 +251,7 @@ public class MainActivity extends Activity {
 
 					Cursor c =  MainActivity.myDB.rawQuery(queryString, args);
 					if (c.getCount() > 0) {
-						Context context = getApplicationContext();
-						String msg = getResources().getString(R.string.token_already_given);
-						int duration = Toast.LENGTH_SHORT;
-						Toast toast = Toast.makeText(context, msg, duration);
-						toast.show();
+						InfoDialog.show(MainActivity.this, getString(R.string.token_already_given));
 					} else {
 						SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "start_wait");		
 						mEditText.setText("");
@@ -273,78 +262,17 @@ public class MainActivity extends Activity {
 					}
 					c.close();
 				} else {
-
-					Context context = getApplicationContext();
-					String msg = getResources().getString(R.string.token_id_needed);
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, msg, duration);
-					toast.show();
+					InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
 				}
 			} else {
-				// check to be sure it isn't already in the Q			
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.token_id_needed);
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();
+				// check to be sure it isn't already in the Q
+				// TODO: Ensure this is correct - likely wrong message, assume this one actually should send you to login
+				InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
 			}
 			updateQlength();
 		}
 	}
 
-	public void doFind(View view) {
-		checkInit();
-		mEditText = (EditText)findViewById(R.id.qrCode);
-		TextView commentET = (TextView)findViewById(R.id.comments);
-
-		String tokenVal = mEditText.getText().toString();
-		if (tokenVal != null) {
-
-			String selection = "Select comments, give_time from simpleq where token_id = " + 
-					tokenVal + " and duration = 0";
-
-			String selectionArgs[] = {};
-
-			Cursor c =  MainActivity.myDB.rawQuery(
-					selection,
-					selectionArgs);
-
-			if (c.getCount() > 0) {
-				c.moveToFirst();
-				String commentVal = c.getString(0);
-				mCommentText = (EditText)findViewById(R.id.comments);
-				mCommentText.setText(commentVal);
-
-				long startTime = c.getLong(1);
-				Date startDate = new Date();
-				startDate.setTime(startTime);
-				TextView startTimeView = (TextView)findViewById(R.id.textView6);
-				startTimeView.setText(startDate.toString());
-				enableEdit = true;
-				Button editButton = (Button)findViewById(R.id.editButton);
-				editButton.setEnabled(true);
-
-			} else {
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.no_tokens_found);
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();		
-			}
-			c.close();
-		} else {
-			Context context = getApplicationContext();
-			String msg = getResources().getString(R.string.token_id_needed);
-			int duration = Toast.LENGTH_SHORT;
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
-		}		
-	}
-
-	public void gotTokenKeystroke(View view){
-		Button editButton = (Button)findViewById(R.id.editButton);
-		editButton.setEnabled(false);
-	}
 
 	public void doEdit(View view) {
 		
@@ -365,12 +293,7 @@ public class MainActivity extends Activity {
 			if (c.getCount() == 0) {
 				// hmmm - where did this token come from??
 				c.close();
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.token_id_needed);
-				int duration = Toast.LENGTH_SHORT;
-
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();				
+				InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
 			} else {	
 				
 				// ok - we know about this outstanding token...
@@ -401,20 +324,26 @@ public class MainActivity extends Activity {
 
 		if ((Prefs.workerVal.length() == 0) || (Prefs.stationVal.length() == 0) || 
 				(Prefs.facilityVal.length() == 0)) {
+			AlertDialog.Builder confirmDeleteBuilder = new AlertDialog.Builder(this);
+			confirmDeleteBuilder.setMessage(getString(R.string.please_enter_details));
 
-			Context context = getApplicationContext();
-			String msg = getResources().getString(R.string.identity_need);
-			int duration = Toast.LENGTH_LONG;
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
+			confirmDeleteBuilder.setPositiveButton(
+					getString(R.string.ok),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							Intent intent = new Intent(MainActivity.this, Prefs.class);
+							startActivity(intent);
+						}
+					});
 
-			Intent intent = new Intent(this, Prefs.class);
-			startActivity(intent);
+			AlertDialog confirmDelete = confirmDeleteBuilder.create();
+			confirmDelete.show();
+
 			return(0);
 		} else {
 			return(1);
 		}			
-	}
+	};
 
 
 	/** take a token 
@@ -457,12 +386,8 @@ public class MainActivity extends Activity {
 				if (c.getCount() == 0) {
 					// hmmm - where did this token come from??
 					c.close();
-					Context context = getApplicationContext();
-					String msg = getResources().getString(R.string.unknown_token);
-					int duration = Toast.LENGTH_SHORT;
+					InfoDialog.show(MainActivity.this, getString(R.string.unknown_token));
 
-					Toast toast = Toast.makeText(context, msg, duration);
-					toast.show();				
 				} else {	
 					
 					// ok - we know about this outstanding token...
@@ -487,114 +412,12 @@ public class MainActivity extends Activity {
 				}
 
 			} else {
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.token_id_needed);
-				int duration = Toast.LENGTH_SHORT;
-
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();
+				InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
 			}
 			updateQlength();
 		}		
 	}
 
-	/** show a token */
-	public void doShow(View view) {
-		if (checkIdentity() == 1) {
-			mEditText = (EditText)findViewById(R.id.qrCode);
-			TextView commentET = (TextView)findViewById(R.id.comments);
-			String commentVal = commentET.getText().toString();
-
-			String tokenVal = mEditText.getText().toString();
-			if (tokenVal != null) {
-				if (tokenVal.length() > 0 ) {
-					SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "show");
-					mEditText.setText("");
-					commentET.setText("");
-
-				} else {
-					// XXX - add popup dialog here!
-					Context context = getApplicationContext();
-					String msg = getResources().getString(R.string.token_id_needed);
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, msg, duration);
-					toast.show();
-				}
-			} else {
-				// XXX - add popup dialog here!
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.token_id_needed);
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();
-			}
-		}
-	}
-	
-	/** give a token */
-	public void doGive(View view) {
-		if (checkIdentity() == 1) {
-			mEditText = (EditText)findViewById(R.id.qrCode);
-			TextView commentET = (TextView)findViewById(R.id.comments);
-			String commentVal = commentET.getText().toString();
-
-			String tokenVal = mEditText.getText().toString();
-			if (tokenVal != null) {
-				if (tokenVal.length() > 0 ) {
-					SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "give");
-					mEditText.setText("");
-					commentET.setText("");
-				} else {
-					// XXX - add popup dialog here!
-					Context context = getApplicationContext();
-					String msg = getResources().getString(R.string.token_id_needed);
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, msg, duration);
-					toast.show();
-				}
-				
-			} else {
-				// XXX - add popup dialog here!
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.token_id_needed);
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();
-			}
-		}
-	}
-	
-	/** show a token */
-	public void doTake(View view) {
-		if (checkIdentity() == 1) {
-			mEditText = (EditText)findViewById(R.id.qrCode);
-			TextView commentET = (TextView)findViewById(R.id.comments);
-			String commentVal = commentET.getText().toString();
-
-			String tokenVal = mEditText.getText().toString();
-			if (tokenVal != null) {
-				if (tokenVal.length() > 0 ) {
-					SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "take");
-					mEditText.setText("");
-					commentET.setText("");
-				} else {
-					// XXX - add popup dialog here!
-					Context context = getApplicationContext();
-					String msg = getResources().getString(R.string.token_id_needed);
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, msg, duration);
-					toast.show();
-				}
-			} else {
-				// XXX - add popup dialog here!
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.token_id_needed);
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();
-			}
-		}
-	}
 
 	/** look at the next token in the line */
 	public void doNext(View view) {
@@ -605,12 +428,7 @@ public class MainActivity extends Activity {
 		String tokenCountText = tokenCountTV.getText().toString();
 		int tokenCount = Integer.parseInt(tokenCountText);
 		if (tokenCount == 0) {
-			Context context = getApplicationContext();
-			String msg = getResources().getString(R.string.no_tokens_found);
-			int duration = Toast.LENGTH_SHORT;
-
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
+			InfoDialog.show(MainActivity.this, getString(R.string.no_tokens_found));
 		} else {
 			checkInit();
 			String selection = "select min(give_time) from simpleq where duration = 0";
@@ -663,11 +481,7 @@ public class MainActivity extends Activity {
 		String tokenCountText = tokenCountTV.getText().toString();
 		int tokenCount = Integer.parseInt(tokenCountText);
 		if (tokenCount == 0) {
-			Context context = getApplicationContext();
-			String msg = getResources().getString(R.string.no_tokens_found);
-			int duration = Toast.LENGTH_SHORT;
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
+			InfoDialog.show(MainActivity.this, getString(R.string.no_tokens_found));
 		} else {
 			checkInit();
 			if (SimpleQ.lastSkipTime == 0) {
@@ -722,11 +536,7 @@ public class MainActivity extends Activity {
 				mEditText.setText("");
 				mCommentText.setText("");
 
-				Context context = getApplicationContext();
-				String msg = getResources().getString(R.string.end_of_queue_reached);
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, msg, duration);
-				toast.show();
+				InfoDialog.show(MainActivity.this, getString(R.string.end_of_queue_reached));
 			}
 		} 	
 	}
@@ -757,11 +567,7 @@ public class MainActivity extends Activity {
 			commentET.setText("");
 			updateQlength();
 		} else {
-			Context context = getApplicationContext();
-			String msg = getResources().getString(R.string.token_id_needed);
-			int duration = Toast.LENGTH_SHORT;
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
+			InfoDialog.show(getApplicationContext(), getString(R.string.token_id_needed));
 		}
 		updateQlength();
 	}
