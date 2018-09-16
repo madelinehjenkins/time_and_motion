@@ -72,6 +72,7 @@
     <string name="confirm_delete_patient_message">Are you sure you want to continue? This will delete the patient entirely from the data.</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
+    <string name="ok">OK</string>
     <string-array name="lang_choice">
         <item>English</item>
         <item>Française</item>
