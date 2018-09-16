@@ -178,11 +178,31 @@ public class MainActivity extends Activity {
         if (requestCode == QRCODEINTENT) {
             if (resultCode == RESULT_OK) {
 
-                // TextView qrTV = (TextView)findViewById(R.id.textView7);
+
                 qrCode = intent.getStringExtra("SCAN_RESULT");
-                // String qrformat = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 tokenText.setText(qrCode);
-                // qrTV.setText(qrCode);
+                mEditText = ((EditText) findViewById(R.id.qrCode));
+                String tokenVal = mEditText.getText().toString().trim();
+
+
+                if (tokenVal.length() > 0) {
+                    // check to be sure token isn't already given...
+                    String queryString = "select give_time from simpleq where token_id = '" +
+                            tokenVal + "' and duration = 0";
+                    String args[] = {};
+
+                    Cursor c = MainActivity.myDB.rawQuery(queryString, args);
+                    if (c.getCount() > 0) {
+                        InfoDialog.show(MainActivity.this, getString(R.string.token_already_given));
+                    } else {
+                        new SimpleQRecord(tokenVal, "", "start_wait");
+                        Button editButton = (Button) findViewById(R.id.editButton);
+                        editButton.setEnabled(true);
+                    }
+                    c.close();
+                } else {
+                    InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
+                }
 
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle cancel
@@ -229,50 +249,6 @@ public class MainActivity extends Activity {
         }
         c.close();
 
-    }
-
-    /**
-     * give a token
-     */
-    public void doStartWait(View view) {
-        if (checkIdentity() == 1) {
-            mEditText = ((EditText) findViewById(R.id.qrCode));
-            TextView commentET = (TextView) findViewById(R.id.comments);
-
-
-            String commentVal = commentET.getText().toString();
-
-            String tokenVal = mEditText.getText().toString().trim();
-            if (tokenVal != null) {
-
-                if (tokenVal.length() > 0) {
-                    // check to be sure token isn't already given...
-                    String queryString = "select give_time from simpleq where token_id = '" +
-                            tokenVal + "' and duration = 0";
-                    String args[] = {};
-
-                    Cursor c = MainActivity.myDB.rawQuery(queryString, args);
-                    if (c.getCount() > 0) {
-                        InfoDialog.show(MainActivity.this, getString(R.string.token_already_given));
-                    } else {
-                        SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "start_wait");
-                        mEditText.setText("");
-                        commentET.setText("");
-
-                        Button editButton = (Button) findViewById(R.id.editButton);
-                        editButton.setEnabled(false);
-                    }
-                    c.close();
-                } else {
-                    InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
-                }
-            } else {
-                // check to be sure it isn't already in the Q
-                // TODO: Ensure this is correct - likely wrong message, assume this one actually should send you to login
-                InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
-            }
-            updateQlength();
-        }
     }
 
 
