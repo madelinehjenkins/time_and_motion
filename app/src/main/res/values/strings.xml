@@ -12,7 +12,7 @@
     <string name="comments_label">comments</string>
     <string name="give_time_label">give_time</string>
     <string name="duration_label">duration</string>
-    <string name="prefs_label">prefs</string>
+    <string name="prefs_label">profile</string>
     <string name="stats_label">stats</string>
     <string name="worker_label">worker</string>
     <string name="station_label">station id</string>
