@@ -1,7 +1,9 @@
 package org.gheskio.queue;
 
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,158 +13,155 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class Prefs extends Activity {
-	
-	public static SharedPreferences sharedPref = null;
-	public SharedPreferences.Editor editor = null;
-	
-	private EditText workerET = null;
-	public static String workerVal = null;
-	
-	private EditText stationET = null;
-	public static String stationVal = null;
-	
-	private EditText facilityET = null;
-	public static String facilityVal = null;
-	
-	private Spinner langSpinner = null;
-	public static String screenLang = null;
+public class Prefs extends Activity implements AdapterView.OnItemSelectedListener {
+    private boolean isFirstSpinnerCall = true;
+    public static SharedPreferences sharedPref = null;
+    public SharedPreferences.Editor editor = null;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_prefs);
-		refreshPrefs();
-	}
+    private EditText workerET = null;
+    public static String workerVal = null;
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.prefs, menu);
-		return true;
-	}
+    private EditText stationET = null;
+    public static String stationVal = null;
+
+    private EditText facilityET = null;
+    public static String facilityVal = null;
+
+    private Spinner langSpinner = null;
+    public static String screenLang = null;
+
+    private Map<String, Integer> languageToPositionMap = new HashMap<String, Integer>() {{
+        put("en", 0);
+        put("fr", 1);
+        put("ht", 2);
+    }};
+
+    private Map<String, Locale> fromSelectionToLocale = new HashMap<String, Locale>() {{
+        put("English", new Locale("en"));
+        put("Française", new Locale("fr"));
+        put("Kreyòl", new Locale("ht"));
+    }};
 
 
-	
-	public void doServerPrefs(View view) {
-		Intent intent = new Intent(this, Server.class);
-		startActivity(intent);
-	}
-	
-	private void refreshPrefs() {
-		// fetch shared preferences and populate the text fields
-		
-		sharedPref = getSharedPreferences("gheskioprefs", Context.MODE_PRIVATE);
-		editor = sharedPref.edit();
-		
-		workerET = (EditText)findViewById(R.id.numGivesText);
-		stationET = (EditText)findViewById(R.id.editText20);
-		facilityET = (EditText)findViewById(R.id.editText3);
-		Spinner langSpinner = (Spinner)findViewById(R.id.spinner1);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_prefs);
+        setSpinnerFromLocale();
+        refreshPrefs();
+        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+        spinner.setOnItemSelectedListener(this);
+    }
 
-		workerVal = sharedPref.getString("WORKER_ID", "");
-		stationVal = sharedPref.getString("STATION_ID", "");
-		facilityVal = sharedPref.getString("FACILITY_ID", "");
-		screenLang = sharedPref.getString("LANG_PREF", "English");
-			
-		Locale appLoc = null;
-		if (new String("English").equals(screenLang)) {
-			appLoc = new Locale("en");
-		} else if (new String("Française").equals(screenLang)) {
-			appLoc = new Locale("fr");
-		} else if (new String("Kreyòl").equals(screenLang)) {
-			appLoc = new Locale("ht");
-		}
-		
-		workerET.setText(workerVal);
-		stationET.setText(stationVal);
-		facilityET.setText(facilityVal);
-		
-		int spinIndex = 0;
-		for (int i = 0; i < langSpinner.getCount(); i++) {
-			if (langSpinner.getItemAtPosition(i).equals(screenLang)) {
-				spinIndex = i;
-			}
-		}
-		langSpinner.setSelection(spinIndex);	
-		
-		Locale.setDefault(appLoc);
-		Configuration appConfig = new Configuration();
-		appConfig.locale = appLoc;
-		getBaseContext().getResources().updateConfiguration(appConfig,
-		    getBaseContext().getResources().getDisplayMetrics());
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.prefs, menu);
+        return true;
+    }
 
-			
-	}
-	
-	public void savePrefs(View view) {
-		// save stuff back into SharedPrefs...
-		boolean haveSufficientInfo = true;
-		workerVal = workerET.getText().toString();
-		Context context = getApplicationContext();
-		int duration = Toast.LENGTH_LONG;
-		if (workerVal.length() == 0) {
-			String msg = getResources().getString(R.string.please_add_worker);
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
-			haveSufficientInfo = false;
-		}
-		stationVal = stationET.getText().toString();
-		if (stationVal.length() == 0) {
-			String msg = getResources().getString(R.string.please_add_station);
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
-			haveSufficientInfo = false;
-		}
-		facilityVal = facilityET.getText().toString();
-		if (facilityVal.length() == 0) {
-			String msg = getResources().getString(R.string.please_add_facility);
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
-			haveSufficientInfo = false;
-		}	
 
-		if (haveSufficientInfo) {
-			editor.putString("WORKER_ID", workerVal);
-			editor.putString("STATION_ID", stationVal);
-			editor.putString("FACILITY_ID", facilityVal);	
+    private void setSpinnerFromLocale() {
+        Locale currentLocale = getResources().getConfiguration().locale;
+        Integer spinnerPosition = languageToPositionMap.get(currentLocale.toString());
+        Spinner langSpinner = (Spinner) findViewById(R.id.spinner1);
+        langSpinner.setSelection(spinnerPosition);
+    }
 
-			langSpinner = (Spinner)findViewById(R.id.spinner1);
-			
-			String langToSet = langSpinner.getSelectedItem().toString();	
-			editor.putString("LANG_PREF", langToSet);
-			editor.commit();
-		
-			Locale appLoc = null;
-			if (new String("English").equals(langToSet)) {
-				appLoc = new Locale("en");
-			} else if (new String("Française").equals(langToSet)) {
-				appLoc = new Locale("fr");
-			} else if (new String("Kreyòl").equals(langToSet)) {
-				appLoc = new Locale("ht");
-			}
-			
-			Locale.setDefault(appLoc);
-			Configuration appConfig = new Configuration();
-			appConfig.locale = appLoc;
-			getBaseContext().getResources().updateConfiguration(appConfig,
-			    getBaseContext().getResources().getDisplayMetrics());
-			    
-			
-			String msg = getResources().getString(R.string.prefs_saved);
-			Toast toast = Toast.makeText(context, msg, duration);
-			toast.show();
-			finish();
-		}
-	}
-	
-	@Override
-	protected void onRestart() {
-	    super.onStart();  // Always call the superclass method first
-	    refreshPrefs();
-	}
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        String selectedLanguage = parent.getItemAtPosition(pos).toString();
+        Locale selectedLocale = fromSelectionToLocale.get(selectedLanguage);
+
+        Locale currentLocale = getResources().getConfiguration().locale;
+
+        if (!isFirstSpinnerCall) {
+            if (!currentLocale.equals(selectedLocale)) {
+                Configuration appConfig = new Configuration();
+                appConfig.locale = selectedLocale;
+                getBaseContext().getResources().updateConfiguration(appConfig,
+                        getBaseContext().getResources().getDisplayMetrics());
+                finish();
+                startActivity(getIntent());
+            }
+        } else {
+            isFirstSpinnerCall = false;
+        }
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) { }
+
+
+    public void doServerPrefs(View view) {
+        Intent intent = new Intent(this, Server.class);
+        startActivity(intent);
+    }
+
+    private void refreshPrefs() {
+        sharedPref = getSharedPreferences("gheskioprefs", Context.MODE_PRIVATE);
+
+        workerET = (EditText) findViewById(R.id.numGivesText);
+        stationET = (EditText) findViewById(R.id.editText20);
+        facilityET = (EditText) findViewById(R.id.editText3);
+        workerET.setText(workerVal);
+        stationET.setText(stationVal);
+        facilityET.setText(facilityVal);
+
+
+        workerVal = sharedPref.getString("WORKER_ID", "");
+        stationVal = sharedPref.getString("STATION_ID", "");
+        facilityVal = sharedPref.getString("FACILITY_ID", "");
+    }
+
+    public void savePrefs(View view) {
+        // save stuff back into SharedPrefs...
+        boolean haveSufficientInfo = true;
+        workerVal = workerET.getText().toString();
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        if (workerVal.length() == 0) {
+            String msg = getResources().getString(R.string.please_add_worker);
+            Toast toast = Toast.makeText(context, msg, duration);
+            toast.show();
+            haveSufficientInfo = false;
+        }
+        stationVal = stationET.getText().toString();
+        if (stationVal.length() == 0) {
+            String msg = getResources().getString(R.string.please_add_station);
+            Toast toast = Toast.makeText(context, msg, duration);
+            toast.show();
+            haveSufficientInfo = false;
+        }
+        facilityVal = facilityET.getText().toString();
+        if (facilityVal.length() == 0) {
+            String msg = getResources().getString(R.string.please_add_facility);
+            Toast toast = Toast.makeText(context, msg, duration);
+            toast.show();
+            haveSufficientInfo = false;
+        }
+
+        if (haveSufficientInfo) {
+            editor = sharedPref.edit();
+            editor.putString("WORKER_ID", workerVal);
+            editor.putString("STATION_ID", stationVal);
+            editor.putString("FACILITY_ID", facilityVal);
+
+            editor.apply();
+
+            String msg = getResources().getString(R.string.prefs_saved);
+            Toast toast = Toast.makeText(context, msg, duration);
+            toast.show();
+            finish();
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();  // Always call the superclass method first
+        refreshPrefs();
+    }
 }
