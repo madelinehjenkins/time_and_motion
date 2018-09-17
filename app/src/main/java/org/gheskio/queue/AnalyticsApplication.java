@@ -14,10 +14,10 @@ public class AnalyticsApplication extends Application {
     private static GoogleAnalytics sAnalytics;
     private static Tracker sTracker;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
-
         sAnalytics = GoogleAnalytics.getInstance(this);
     }
 

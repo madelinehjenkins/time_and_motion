@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class Prefs extends Activity implements AdapterView.OnItemSelectedListener {
+public class Prefs extends BaseActivity implements AdapterView.OnItemSelectedListener {
     private boolean isFirstSpinnerCall = true;
     public static SharedPreferences sharedPref = null;
     public SharedPreferences.Editor editor = null;
@@ -68,7 +69,9 @@ public class Prefs extends Activity implements AdapterView.OnItemSelectedListene
 
     private void setSpinnerFromLocale() {
         Locale currentLocale = getResources().getConfiguration().locale;
-        Integer spinnerPosition = languageToPositionMap.get(currentLocale.toString());
+        System.out.println("👩‍🎤" + currentLocale.toString().substring(0,2));
+        Integer spinnerPosition = languageToPositionMap.get(currentLocale.toString().substring(0,2));
+        System.out.println("👋"+ spinnerPosition);
         Spinner langSpinner = (Spinner) findViewById(R.id.spinner1);
         langSpinner.setSelection(spinnerPosition);
     }
@@ -81,6 +84,10 @@ public class Prefs extends Activity implements AdapterView.OnItemSelectedListene
 
         if (!isFirstSpinnerCall) {
             if (!currentLocale.equals(selectedLocale)) {
+                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
+                e.putString("locale_override", selectedLocale.toString());
+                e.apply();
+
                 Configuration appConfig = new Configuration();
                 appConfig.locale = selectedLocale;
                 getBaseContext().getResources().updateConfiguration(appConfig,

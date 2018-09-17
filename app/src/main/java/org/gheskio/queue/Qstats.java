@@ -33,7 +33,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Qstats extends Activity {
+public class Qstats extends BaseActivity {
 	
 	// textView2 - gives
 	// textView4 - takes

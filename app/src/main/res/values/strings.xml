@@ -6,6 +6,7 @@
     <string name="title_activity_set_prefs">SetPrefs</string>
     <string name="title_activity_qstats">QStats</string>
     <string name="title_activity_edit_qrecord">EditQRecord</string>
+    <string name="title_base_activity">BaseActivity</string>
     <string name="take_button">take</string>
     <string name="give_button">give</string>
     <string name="next_button">next</string>

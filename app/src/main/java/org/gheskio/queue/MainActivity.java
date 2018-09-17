@@ -1,18 +1,14 @@
 package org.gheskio.queue;
 
-import java.util.Date;
-import java.util.Locale;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,7 +18,7 @@ import android.widget.Button;
 import com.google.android.gms.analytics.Tracker;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
     public static EditText mEditText;
     public EditText mCommentText;
     public static SharedPreferences sharedPref = null;
@@ -64,22 +60,6 @@ public class MainActivity extends Activity {
 
         mySQRDBH = new SimpleQdbHelper(getCurrentFocus().getContext());
         myDB = mySQRDBH.getWritableDatabase();
-        String screenLang = sharedPref.getString("LANG_PREF", "English");
-
-        Locale appLoc = null;
-        if (new String("English").equals(screenLang)) {
-            appLoc = new Locale("en");
-        } else if (new String("Française").equals(screenLang)) {
-            appLoc = new Locale("fr");
-        } else if (new String("Kreyòl").equals(screenLang)) {
-            appLoc = new Locale("ht");
-        }
-
-        Locale.setDefault(appLoc);
-        Configuration appConfig = new Configuration();
-        appConfig.locale = appLoc;
-        getBaseContext().getResources().updateConfiguration(appConfig,
-                getBaseContext().getResources().getDisplayMetrics());
 
 
         checkInit();

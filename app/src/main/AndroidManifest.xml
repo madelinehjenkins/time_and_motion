@@ -42,6 +42,10 @@
             android:label="Prefs" >
         </activity>
         <activity
+            android:name=".BaseActivity"
+            android:label="@string/title_base_activity" >
+        </activity>
+        <activity
             android:name=".Server"
             android:label="@string/title_activity_server" >
         </activity>
