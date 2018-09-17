@@ -184,9 +184,6 @@ public class MainActivity extends Activity {
                 tokenText.setText(qrCode);
                 // qrTV.setText(qrCode);
 
-            } else if (resultCode == RESULT_CANCELED) {
-                // Handle cancel
-                tokenText.setText("scan cancelled");
             }
         } else if (requestCode == EDITRECORDINTENT) {
             if (resultCode == RESULT_OK) {
