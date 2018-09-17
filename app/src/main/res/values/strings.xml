@@ -67,8 +67,8 @@
     <string name="title_activity_gedit">Gedit</string>
     <string name="prefs_saved">preferences saved</string>
     <string name="unknown_token">unknown token!</string>
-    <string name="begin_wait_label">begin wt</string>
-    <string name="end_wait_label">end wt</string>
+    <string name="begin_wait_label">begin</string>
+    <string name="end_wait_label">end</string>
     <string name="confirm_delete_stats_message">Are you sure you want to continue? This will delete ALL unuploaded patient queue data.</string>
     <string name="confirm_delete_patient_message">Are you sure you want to continue? This will delete the patient entirely from the data.</string>
     <string name="cancel">Cancel</string>

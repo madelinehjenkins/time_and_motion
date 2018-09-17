@@ -65,7 +65,9 @@
     <string name="prefs_saved">Préférences enregistrées</string>
     <string name="unknown_token">Jeton inconnu!</string> 
     <string name="begin_wait_label">Beguine q</string>
-    <string name="end_wait_label">end q</string>  
+    <string name="end_wait_label">end q</string>
+    <string name="please_scan_qr_code">S\'il vous plait scanner le code du patient</string>
+
     <string-array name="lang_choice">
         <item>English</item>
         <item>Française</item>
