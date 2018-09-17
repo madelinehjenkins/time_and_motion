@@ -44,7 +44,7 @@ public class Prefs extends BaseActivity implements AdapterView.OnItemSelectedLis
 
     private Map<String, Locale> fromSelectionToLocale = new HashMap<String, Locale>() {{
         put("English", new Locale("en"));
-        put("Française", new Locale("fr"));
+        put("Français", new Locale("fr"));
         put("Kreyòl", new Locale("ht"));
     }};
 
