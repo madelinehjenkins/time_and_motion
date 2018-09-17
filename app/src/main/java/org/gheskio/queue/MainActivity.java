@@ -6,7 +6,7 @@ import java.util.Locale;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
+
+import com.google.android.gms.analytics.Tracker;
 
 
 public class MainActivity extends Activity {
@@ -45,11 +47,17 @@ public class MainActivity extends Activity {
 
     Boolean isInitialized = new Boolean(false);
 
+    private Tracker mTracker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AnalyticsApplication application = (AnalyticsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
         sharedPref = getSharedPreferences("gheskioprefs", Context.MODE_PRIVATE);
         editor = sharedPref.edit();
         isInitialized = sharedPref.getBoolean(DBINITKEY, false);
