@@ -15,7 +15,7 @@ public class BaseActivity extends Activity{
 
     private Context updateBaseContextLocale(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String language = preferences.getString("locale_override", "");
+        String language = preferences.getString("locale_override", Locale.getDefault().toString());
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
         return updateResourcesLocale(context, locale);
@@ -27,6 +27,20 @@ public class BaseActivity extends Activity{
         return context.createConfigurationContext(configuration);
     }
 
+    private Boolean didLanguageChange(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String sharedLanguage = preferences.getString("locale_override", Locale.getDefault().toString());
+        String currentLanguage = context.getResources().getConfiguration().locale.toString();
 
+        return !sharedLanguage.equals(currentLanguage);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (didLanguageChange(this)) {
+            recreate();
+        }
+    }
 
 }

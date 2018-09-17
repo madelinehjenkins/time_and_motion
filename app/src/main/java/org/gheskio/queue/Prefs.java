@@ -69,9 +69,7 @@ public class Prefs extends BaseActivity implements AdapterView.OnItemSelectedLis
 
     private void setSpinnerFromLocale() {
         Locale currentLocale = getResources().getConfiguration().locale;
-        System.out.println("👩‍🎤" + currentLocale.toString().substring(0,2));
         Integer spinnerPosition = languageToPositionMap.get(currentLocale.toString().substring(0,2));
-        System.out.println("👋"+ spinnerPosition);
         Spinner langSpinner = (Spinner) findViewById(R.id.spinner1);
         langSpinner.setSelection(spinnerPosition);
     }
@@ -86,14 +84,9 @@ public class Prefs extends BaseActivity implements AdapterView.OnItemSelectedLis
             if (!currentLocale.equals(selectedLocale)) {
                 SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
                 e.putString("locale_override", selectedLocale.toString());
-                e.apply();
+                e.commit();
 
-                Configuration appConfig = new Configuration();
-                appConfig.locale = selectedLocale;
-                getBaseContext().getResources().updateConfiguration(appConfig,
-                        getBaseContext().getResources().getDisplayMetrics());
-                finish();
-                startActivity(getIntent());
+                recreate();
             }
         } else {
             isFirstSpinnerCall = false;
