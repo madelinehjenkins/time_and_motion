@@ -74,6 +74,7 @@
     <string name="delete">Delete</string>
     <string name="ok">OK</string>
     <string name="please_enter_details">Please enter your details</string>
+    <string name="please_scan_qr_code">Please scan QR code</string>
     <string-array name="lang_choice">
         <item>English</item>
         <item>Française</item>

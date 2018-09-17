@@ -49,7 +49,7 @@
         </activity>
         <activity
             android:name=".QrCodeScanner"
-            android:label="Please scan code (QR, barcode)" >
+            android:label="@string/please_scan_qr_code" >
         </activity>
         <activity
             android:name=".Item"
