@@ -12,7 +12,7 @@
     <string name="comments_label">commentaire</string>
     <string name="give_time_label">debut temps</string>
     <string name="duration_label">duree</string>
-    <string name="prefs_label">params</string>
+    <string name="prefs_label">profil</string>
     <string name="stats_label">stats</string>
     <string name="worker_label">travailieur</string>
     <string name="station_label">station id</string>
@@ -65,10 +65,12 @@
     <string name="prefs_saved">Préférences enregistrées</string>
     <string name="unknown_token">Jeton inconnu!</string> 
     <string name="begin_wait_label">Beguine q</string>
-    <string name="end_wait_label">end q</string>  
+    <string name="end_wait_label">end q</string>
+    <string name="please_scan_qr_code">S\'il vous plait scanner le code du patient</string>
+
     <string-array name="lang_choice">
         <item>English</item>
-        <item>Française</item>
+        <item>Français</item>
         <item>Kreyòl</item>
     </string-array>
           

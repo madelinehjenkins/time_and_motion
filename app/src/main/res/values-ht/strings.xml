@@ -2,28 +2,28 @@
 <resources>
 
     <string name="app_name">GHESKIO</string>
-    <string name="action_settings">Paramètres</string>
-    <string name="title_activity_set_prefs">Jeu Préférences</string>
-    <string name="title_activity_qstats">Keu estatistik</string>
-    <string name="title_activity_edit_qrecord">Edit atik</string>
-    <string name="take_button">fen</string>
-    <string name="give_button">kòmanse</string>
+    <string name="action_settings">Anviwònman</string>
+    <string name="title_activity_set_prefs">Preferans</string>
+    <string name="title_activity_qstats">Estatistik</string>
+    <string name="title_activity_edit_qrecord">Modifyé</string>
+    <string name="take_button">Prann</string>
+    <string name="give_button">Bay</string>
     <string name="next_button">pwochen</string>
-    <string name="comments_label">kòmantè</string>
+    <string name="comments_label">Remak</string>
     <string name="give_time_label">bay tan</string>
     <string name="duration_label">dire</string>
-    <string name="prefs_label">preferans</string>
+    <string name="prefs_label">profil</string>
     <string name="stats_label">Statistik</string>
     <string name="worker_label">travayè</string>
     <string name="station_label">id estasyon</string>
-    <string name="facility_label">id etablisman</string>
+    <string name="facility_label">id klinik</string>
     <string name="server_label">sèvè IP</string>
     <string name="username_label">itilizatè</string>
     <string name="port_label">pò</string>
     <string name="num_gives_label">bay</string>
     <string name="num_takes_label">pran</string>
     <string name="start_time_label">kòmanse</string>
-    <string name="end_time_label">fen</string>
+    <string name="end_time_label">fini</string>
     <string name="avg_wait_label">rete tann mwayèn</string>
     <string name="upload_label">upload</string>
     <string name="clear_label">klè</string>
@@ -31,44 +31,54 @@
     <string name="save_label">sove</string>
     <string name="passwd_label">modpas</string>
     <string name="server_info">sèvè</string>
-    <string name="title_activity_show_detail">montre detay</string>
-    <string name="token_label">id siy</string>
+    <string name="title_activity_show_detail">motre detay</string>
+    <string name="token_label">NIH ID</string>
     <string name="skip_button">sote</string>
     <string name="find_button">jwenn</string>
     <string name="endpoint_label">URL</string>
-    <string name="q_size">gwosè keu</string>
+    <string name="q_size">Konbyen moun ap tann</string>
     <string name="delete_button">efase</string>
     <string name="title_activity_prefs">preferans</string>
     <string name="title_activity_server">sèvè</string>
     <string name="title_activity_item">atik</string>
-    <string name="update_label">aktyalizasyon</string>
+    <string name="update_label">mete a jou</string>
     <string name="title_activity_recorduploader">dosye telepartajeur</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_helpinfo">ede enfòmasyon</string>
-    <string name="num_shows_label">montre nimewo</string>
-    <string name="show_label">montre</string>
-    <string name="token_id_needed">id siy nesesè</string>
-    <string name="no_tokens_found">pa gen okenn marqueur jwenn</string>
-    <string name="token_already_given">siy deja bay</string>
-    <string name="end_of_queue_reached">nan fen keu rive</string>
+    <string name="num_shows_label">motre nimewo</string>
+    <string name="show_label">motre</string>
+    <string name="token_id_needed">Bezwen NIH ID</string>
+    <string name="no_tokens_found">Pa gen oken NIH ID kom sa a</string>
+    <string name="token_already_given">NIH ID deja antre</string>
+    <string name="end_of_queue_reached">Fen</string>
     <string name="please_add_worker">tanpri ajoute travayè</string>
     <string name="please_add_station">tanpri ajoute estasyon</string>
-    <string name="please_add_facility">tanpri ajoute etablisman</string>
-    <string name="not_enough_info_for_avgs">pa ase enfòmasyon yo kalkile mwayèn</string>
-    <string name="problem_uploading">Upload pwoblèm; tanpri tcheke koneksyon ak sèvè anviwònman</string>
-    <string name="identity_need">Tanpri antre ki moun ki opere aparèy sa a ak ki kote yo ye nan Preferences</string>
-    <string name="upload_success">Voye konplè</string>
-    <string name="upload_failure">Upload pwoblèm; tanpri tcheke koneksyon ak sèvè anviwònman</string>
-    <string name="edit_label">Edit</string>
-    <string name="title_activity_edit_record">Dosye Edit</string>
+    <string name="please_add_facility">tanpri ajoute klinik</string>
+    <string name="not_enough_info_for_avgs">pa ase enfómasyon pou kalkile mwayen</string>
+    <string name="problem_uploading">Pwoblem upload; tanpri teke koneksyon ak sèvè</string>
+    <string name="identity_need">Tanpri antre ki moun ki opere aparéy sa a ak ki kote yo ye nan profil</string>
+    <string name="upload_success">Upload konplé</string>
+    <string name="upload_failure">Pwoblem upload; tanpri teke koneksyon ak sèvè</string>
+    <string name="edit_label">Modifyé</string>
+    <string name="title_activity_edit_record">Modifyé dosye</string>
     <string name="record_updated">dosye mete ajou</string>
     <string name="record_deleted">dosye efase</string>
     <string name="title_activity_gedit">Gedit</string>
     <string name="prefs_saved">preferans sove</string>
-    <string name="unknown_token">siy pa jwenn!</string>
+    <string name="unknown_token">NIH ID pat jwenn</string>
+    <string name="begin_wait_label">Kómanse</string>
+    <string name="end_wait_label">Fini</string>
+    <string name="confirm_delete_stats_message">Eske w vle kontinye? Tout enfómasyon ke poko telechaje ap efase.</string>
+    <string name="confirm_delete_patient_message">Eske w vle kontinye? Tout enfómasyon sou pasyan sa a ap efase.</string>
+    <string name="cancel">Anile</string>
+    <string name="delete">Efase</string>
+    <string name="ok">OK</string>
+    <string name="please_enter_details">Tanpri, antre detay yo. </string>
+    <string name="please_scan_qr_code">Souple scane code pasyan an</string>
+
     <string-array name="lang_choice">
         <item>English</item>
-        <item>Française</item>
+        <item>Français</item>
         <item>Kreyòl</item>
     </string-array>
 

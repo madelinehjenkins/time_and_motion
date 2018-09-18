@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ga_trackingId" translatable="false">UA-125894837-1</string>
+    <string name="ga_sampleFrequency">100.0</string>
+
+    <!-- Enable automatic Activity measurement -->
+    <bool name="ga_autoActivityTracking">true</bool>
+
+    <!-- catch and report uncaught exceptions from the app -->
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+</resources>

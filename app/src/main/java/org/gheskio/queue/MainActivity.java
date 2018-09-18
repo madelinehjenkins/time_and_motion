@@ -1,26 +1,25 @@
 package org.gheskio.queue;
 
-import java.util.Date;
-import java.util.Locale;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
+import com.google.android.gms.analytics.Tracker;
 
-public class MainActivity extends Activity {
+
+public class MainActivity extends BaseActivity {
     public static EditText mEditText;
     public EditText mCommentText;
     public static SharedPreferences sharedPref = null;
@@ -45,37 +44,28 @@ public class MainActivity extends Activity {
 
     Boolean isInitialized = new Boolean(false);
 
+    private Tracker mTracker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AnalyticsApplication application = (AnalyticsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
         sharedPref = getSharedPreferences("gheskioprefs", Context.MODE_PRIVATE);
         editor = sharedPref.edit();
         isInitialized = sharedPref.getBoolean(DBINITKEY, false);
 
         mySQRDBH = new SimpleQdbHelper(getCurrentFocus().getContext());
         myDB = mySQRDBH.getWritableDatabase();
-        String screenLang = sharedPref.getString("LANG_PREF", "English");
-
-        Locale appLoc = null;
-        if (new String("English").equals(screenLang)) {
-            appLoc = new Locale("en");
-        } else if (new String("Française").equals(screenLang)) {
-            appLoc = new Locale("fr");
-        } else if (new String("Kreyòl").equals(screenLang)) {
-            appLoc = new Locale("ht");
-        }
-
-        Locale.setDefault(appLoc);
-        Configuration appConfig = new Configuration();
-        appConfig.locale = appLoc;
-        getBaseContext().getResources().updateConfiguration(appConfig,
-                getBaseContext().getResources().getDisplayMetrics());
 
 
         checkInit();
         updateQlength();
+        updateProfile();
 
         //
     }
@@ -85,6 +75,7 @@ public class MainActivity extends Activity {
         super.onStart();
         // The activity is about to become visible.
         updateQlength();
+        updateProfile();
     }
 
     @Override
@@ -92,23 +83,7 @@ public class MainActivity extends Activity {
         super.onResume();
         // The activity has become visible (it is now "resumed").
         updateQlength();
-
-        Prefs.workerVal = sharedPref.getString("WORKER_ID", "");
-        Prefs.stationVal = sharedPref.getString("STATION_ID", "");
-        Prefs.facilityVal = sharedPref.getString("FACILITY_ID", "");
-
-        String userPrefsString = "using: " + Prefs.workerVal + ":" + Prefs.stationVal + ":" + Prefs.facilityVal;
-
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_LONG;
-        String msg = getResources().getString(R.string.token_id_needed);
-
-        // do this to refresh layout, because language might have changed in doPrefs,
-        // because we do a workaround to set non-supported locale, Kreyole...
-        updateQlength();
-
-        Toast toast = Toast.makeText(context, userPrefsString, duration);
-        toast.show();
+        updateProfile();
     }
 
     private void checkInit() {
@@ -204,9 +179,6 @@ public class MainActivity extends Activity {
                     InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
                 }
 
-            } else if (resultCode == RESULT_CANCELED) {
-                // Handle cancel
-                tokenText.setText("scan cancelled");
             }
         } else if (requestCode == EDITRECORDINTENT) {
             if (resultCode == RESULT_OK) {
@@ -251,6 +223,65 @@ public class MainActivity extends Activity {
 
     }
 
+
+    private void updateProfile() {
+        Prefs.workerVal = sharedPref.getString("WORKER_ID", "");
+        Prefs.stationVal = sharedPref.getString("STATION_ID", "");
+        Prefs.facilityVal = sharedPref.getString("FACILITY_ID", "");
+
+        TextView workerTextView = (TextView) findViewById(R.id.worker);
+        workerTextView.setText(Prefs.workerVal);
+
+        TextView stationTextView = (TextView) findViewById(R.id.station);
+        stationTextView.setText(Prefs.stationVal);
+
+        TextView facilityTextView = (TextView) findViewById(R.id.facility);
+        facilityTextView.setText(Prefs.facilityVal);
+    }
+
+    /**
+     * give a token
+     */
+    public void doStartWait(View view) {
+        if (checkIdentity() == 1) {
+            mEditText = ((EditText) findViewById(R.id.qrCode));
+            TextView commentET = (TextView) findViewById(R.id.comments);
+
+
+            String commentVal = commentET.getText().toString();
+
+            String tokenVal = mEditText.getText().toString().trim();
+            if (tokenVal != null) {
+
+                if (tokenVal.length() > 0) {
+                    // check to be sure token isn't already given...
+                    String queryString = "select give_time from simpleq where token_id = '" +
+                            tokenVal + "' and duration = 0";
+                    String args[] = {};
+
+                    Cursor c = MainActivity.myDB.rawQuery(queryString, args);
+                    if (c.getCount() > 0) {
+                        InfoDialog.show(MainActivity.this, getString(R.string.token_already_given));
+                    } else {
+                        SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "start_wait");
+                        mEditText.setText("");
+                        commentET.setText("");
+
+                        Button editButton = (Button) findViewById(R.id.editButton);
+                        editButton.setEnabled(false);
+                    }
+                    c.close();
+                } else {
+                    InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
+                }
+            } else {
+                // check to be sure it isn't already in the Q
+                // TODO: Ensure this is correct - likely wrong message, assume this one actually should send you to login
+                InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
+            }
+            updateQlength();
+        }
+    }
 
     public void doEdit(View view) {
 
@@ -334,7 +365,7 @@ public class MainActivity extends Activity {
             mCommentText = (EditText) findViewById(R.id.comments);
             String commentVal = mCommentText.getText().toString();
 
-            if (tokenVal != null) {
+            if (!TextUtils.isEmpty(tokenVal)) {
 
                 // add an event row ... regardless
                 SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "end_wait");

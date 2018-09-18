@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Server extends Activity {
+public class Server extends BaseActivity {
 	
 	public EditText URL_ET = null;
 	public static String URL_Val = null;
@@ -37,7 +37,7 @@ public class Server extends Activity {
 	
     @Override
     protected void onRestart() {
-        super.onStart();
+        super.onRestart();
         // The activity is about to become visible.
         refreshVals();
     }
