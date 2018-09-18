@@ -34,12 +34,7 @@ public class Gedit extends Activity {
 		EditText commentText = (EditText)findViewById(R.id.editText1);
 		String newComments = commentText.getText().toString();
 		String tokenId = this.getIntent().getStringExtra("TOKEN_ID"); 	
-		
-		// ContentValues values = new ContentValues();
-		// values.put(SimpleQRecord.COLUMN_COMMENTS, newComments);
-		
-		// int numRows = MainActivity.myDB.update(SimpleQRecord.TABLE_NAME, values,
-				// SimpleQRecord.COLUMN_TOKEN_ID + "=" + tokenId , null );
+
 		
 		// for some reason, update method not working :-/
 		String updateString = "update simpleq set comments = '" + newComments + "' where token_id = '" + tokenId + "';";
