@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Prefs extends BaseActivity implements AdapterView.OnItemSelectedListener {
@@ -105,8 +106,8 @@ public class Prefs extends BaseActivity implements AdapterView.OnItemSelectedLis
         sharedPref = getSharedPreferences("gheskioprefs", Context.MODE_PRIVATE);
 
         workerET = (EditText) findViewById(R.id.numGivesText);
-        stationET = (EditText) findViewById(R.id.editText20);
-        facilityET = (EditText) findViewById(R.id.editText3);
+        stationET = (EditText) findViewById(R.id.editText3);
+        facilityET = (EditText) findViewById(R.id.editText20);
         workerET.setText(workerVal);
         stationET.setText(stationVal);
         facilityET.setText(facilityVal);

@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity {
 
         checkInit();
         updateQlength();
+        updateProfile();
 
         //
     }
@@ -73,6 +74,7 @@ public class MainActivity extends BaseActivity {
         super.onStart();
         // The activity is about to become visible.
         updateQlength();
+        updateProfile();
     }
 
     @Override
@@ -80,23 +82,7 @@ public class MainActivity extends BaseActivity {
         super.onResume();
         // The activity has become visible (it is now "resumed").
         updateQlength();
-
-        Prefs.workerVal = sharedPref.getString("WORKER_ID", "");
-        Prefs.stationVal = sharedPref.getString("STATION_ID", "");
-        Prefs.facilityVal = sharedPref.getString("FACILITY_ID", "");
-
-        String userPrefsString = "using: " + Prefs.workerVal + ":" + Prefs.stationVal + ":" + Prefs.facilityVal;
-
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_LONG;
-        String msg = getResources().getString(R.string.token_id_needed);
-
-        // do this to refresh layout, because language might have changed in doPrefs,
-        // because we do a workaround to set non-supported locale, Kreyole...
-        updateQlength();
-
-        Toast toast = Toast.makeText(context, userPrefsString, duration);
-        toast.show();
+        updateProfile();
     }
 
     private void checkInit() {
@@ -214,6 +200,21 @@ public class MainActivity extends BaseActivity {
         }
         c.close();
 
+    }
+
+    private void updateProfile() {
+        Prefs.workerVal = sharedPref.getString("WORKER_ID", "");
+        Prefs.stationVal = sharedPref.getString("STATION_ID", "");
+        Prefs.facilityVal = sharedPref.getString("FACILITY_ID", "");
+
+        TextView workerTextView = (TextView) findViewById(R.id.worker);
+        workerTextView.setText(Prefs.workerVal);
+
+        TextView stationTextView = (TextView) findViewById(R.id.station);
+        stationTextView.setText(Prefs.stationVal);
+
+        TextView facilityTextView = (TextView) findViewById(R.id.facility);
+        facilityTextView.setText(Prefs.facilityVal);
     }
 
     /**
