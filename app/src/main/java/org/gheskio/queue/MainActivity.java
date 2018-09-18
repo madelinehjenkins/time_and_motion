@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -344,7 +345,7 @@ public class MainActivity extends BaseActivity {
             mCommentText = (EditText) findViewById(R.id.comments);
             String commentVal = mCommentText.getText().toString();
 
-            if (tokenVal != null) {
+            if (!TextUtils.isEmpty(tokenVal)) {
 
                 // add an event row ... regardless
                 SimpleQRecord sqr = new SimpleQRecord(tokenVal, commentVal, "end_wait");
