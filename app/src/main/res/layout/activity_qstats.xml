@@ -27,7 +27,7 @@
         android:onClick="doClear"
         android:text="@string/clear_label" />
 
-    
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView7"
         android:layout_centerHorizontal="true"
+        android:paddingLeft="20dp"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -61,6 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView8"
+        android:paddingLeft="20dp"
         android:layout_centerHorizontal="true"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -71,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView13"
         android:layout_centerHorizontal="true"
+        android:paddingLeft="20dp"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
