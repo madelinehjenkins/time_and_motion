@@ -153,11 +153,31 @@ public class MainActivity extends BaseActivity {
         if (requestCode == QRCODEINTENT) {
             if (resultCode == RESULT_OK) {
 
-                // TextView qrTV = (TextView)findViewById(R.id.textView7);
+
                 qrCode = intent.getStringExtra("SCAN_RESULT");
-                // String qrformat = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 tokenText.setText(qrCode);
-                // qrTV.setText(qrCode);
+                mEditText = ((EditText) findViewById(R.id.qrCode));
+                String tokenVal = mEditText.getText().toString().trim();
+
+
+                if (tokenVal.length() > 0) {
+                    // check to be sure token isn't already given...
+                    String queryString = "select give_time from simpleq where token_id = '" +
+                            tokenVal + "' and duration = 0";
+                    String args[] = {};
+
+                    Cursor c = MainActivity.myDB.rawQuery(queryString, args);
+                    if (c.getCount() > 0) {
+                        InfoDialog.show(MainActivity.this, getString(R.string.token_already_given));
+                    } else {
+                        new SimpleQRecord(tokenVal, "", "start_wait");
+                        Button editButton = (Button) findViewById(R.id.editButton);
+                        editButton.setEnabled(true);
+                    }
+                    c.close();
+                } else {
+                    InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
+                }
 
             }
         } else if (requestCode == EDITRECORDINTENT) {
@@ -202,6 +222,7 @@ public class MainActivity extends BaseActivity {
         c.close();
 
     }
+
 
     private void updateProfile() {
         Prefs.workerVal = sharedPref.getString("WORKER_ID", "");
@@ -261,7 +282,6 @@ public class MainActivity extends BaseActivity {
             updateQlength();
         }
     }
-
 
     public void doEdit(View view) {
 

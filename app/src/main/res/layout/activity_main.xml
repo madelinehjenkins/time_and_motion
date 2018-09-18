@@ -176,14 +176,12 @@
         android:layout_gravity="bottom"
         android:text="@string/stats_label" />
 
-
     <Button
         android:id="@+id/endWaitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="8"
         android:layout_column="3"
-        android:layout_marginBottom="31dp"
         android:onClick="doEndWait"
         android:text="@string/end_wait_label" />
 
@@ -218,5 +216,4 @@
         android:scaleType="fitCenter"
         android:onClick="doQRScan"
         android:src="@drawable/qrcode2_icon" />
-
 </GridLayout>
