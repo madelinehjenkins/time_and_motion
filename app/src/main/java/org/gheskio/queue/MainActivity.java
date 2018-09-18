@@ -152,33 +152,8 @@ public class MainActivity extends BaseActivity {
         EditText tokenText = (EditText) findViewById(R.id.qrCode);
         if (requestCode == QRCODEINTENT) {
             if (resultCode == RESULT_OK) {
-
-
                 qrCode = intent.getStringExtra("SCAN_RESULT");
                 tokenText.setText(qrCode);
-                mEditText = ((EditText) findViewById(R.id.qrCode));
-                String tokenVal = mEditText.getText().toString().trim();
-
-
-                if (tokenVal.length() > 0) {
-                    // check to be sure token isn't already given...
-                    String queryString = "select give_time from simpleq where token_id = '" +
-                            tokenVal + "' and duration = 0";
-                    String args[] = {};
-
-                    Cursor c = MainActivity.myDB.rawQuery(queryString, args);
-                    if (c.getCount() > 0) {
-                        InfoDialog.show(MainActivity.this, getString(R.string.token_already_given));
-                    } else {
-                        new SimpleQRecord(tokenVal, "", "start_wait");
-                        Button editButton = (Button) findViewById(R.id.editButton);
-                        editButton.setEnabled(true);
-                    }
-                    c.close();
-                } else {
-                    InfoDialog.show(MainActivity.this, getString(R.string.token_id_needed));
-                }
-
             }
         } else if (requestCode == EDITRECORDINTENT) {
             if (resultCode == RESULT_OK) {
